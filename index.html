@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Yala Safari Jeep Tour offers unforgettable wildlife adventures in Yala, Udawalawe, Bundala, and Weheragala National Parks in Sri Lanka. Book your safari today!">
+    <meta name="keywords"
+        content="Yala Safari, Udawalawe Safari, Bundala Safari, Weheragala Safari, Sri Lanka Wildlife Tours">
+    <meta name="author" content="Yala Safari Jeep Tour">
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Yala Safari Jeep Tour - Sri Lanka Wildlife Adventures">
+    <meta property="og:description"
+        content="Book unforgettable wildlife adventures in Yala, Udawalawe, Bundala, and Weheragala National Parks.">
+    <meta property="og:image" content="images/tiger.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <title>Yala Safari Jeep Tour - Sri Lanka Wildlife Adventures</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .navbar {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a3c34 0%, #4a7043 100%);
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 8s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            line-height: 1.2;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .tour-card,
+        .testimonial-card,
+        .package-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+        }
+
+        .tour-card:hover,
+        .testimonial-card:hover,
+        .package-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+        }
+
+        .tour-card img,
+        .testimonial-card img {
+            transition: transform 0.4s ease;
+        }
+
+        .tour-card:hover img,
+        .testimonial-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 18px;
+            border-radius: 50%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .sticky-cta {
+            z-index: 50;
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+        }
+
+        .trust-badge i {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .trust-badge i:hover {
+            transform: scale(1.2);
+            color: #f59e0b;
+        }
+
+        .star-rating {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .faq-item .faq-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .faq-item .faq-content.show {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .booking-section {
+            background: linear-gradient(135deg, #1a3c34, #4a7043);
+            color: white;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .booking-section input,
+        .booking-section select {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .booking-section input::placeholder,
+        .booking-section select {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .booking-section button {
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+        }
+
+        .booking-section button:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .tour-card,
+            .testimonial-card,
+            .package-card {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 bg-transparent">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="images/Final.png" alt="Yala Safari Jeep Tour Logo" class="h-12 mr-3">
+                <a href="index.html" class="text-2xl font-bold text-white">Yala Safari Jeep Tour</a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-white hover:text-yellow-400">Home</a>
+                <a href="yala.html" class="text-white hover:text-yellow-400">Yala</a>
+                <a href="udawalawe.html" class="text-white hover:text-yellow-400">Udawalawe</a>
+                <a href="bundala.html" class="text-white hover:text-yellow-400">Bundala</a>
+                <a href="weheragala.html" class="text-white hover:text-yellow-400">Weheragala</a>
+                <a href="about.html" class="text-white hover:text-yellow-400">About</a>
+                <a href="contact.html" class="text-white hover:text-yellow-400">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <a href="index.html" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
+            <a href="yala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Yala</a>
+            <a href="udawalawe.html" class="block px-4 py-2 text-white hover:bg-gray-700">Udawalawe</a>
+            <a href="bundala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Bundala</a>
+            <a href="weheragala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Weheragala</a>
+            <a href="about.html" class="block px-4 py-2 text-white hover:bg-gray-700">About</a>
+            <a href="contact.html" class="block px-4 py-2 text-white hover:bg-gray-700">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta fixed bottom-0 w-full bg-yellow-400 text-gray-800 py-3 text-center" data-aos="fade-up">
+        <p class="inline-block mr-4 font-semibold">Ready for an adventure? Book your safari now!</p>
+        <a href="#booking"
+            class="bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition duration-300">Book
+            Now</a>
+    </div>
+
+    <!-- Hero Section with Image Slideshow -->
+    <section class="hero" data-aos="zoom-in">
+        <div class="slideshow">
+            <img src="images/tiger3.jpg" alt="Leopard in Yala" class="slide active">
+            <img src="images/Ele.jpg" alt="Elephants in Safari" class="slide">
+            <img src="images/birds.jpg" alt="Birds in Safari" class="slide">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Explore Sri Lanka's Wild Heart</h1>
+            <p class="text-lg md:text-xl mb-6">Join Yala Safari Jeep Tour for unforgettable adventures in Yala,
+                Udawalawe, Bundala, and Weheragala.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#booking"
+                    class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300">Book
+                    Your Safari</a>
+                <a href="#testimonials"
+                    class="bg-transparent border-2 border-white text-white px-6 py-2 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition duration-300">See
+                    Testimonials</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">Our Safari Tours</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="tour-card bg-gray-100 rounded-lg overflow-hidden" data-aos="zoom-in">
+                    <img src="images/tiger.jpg" alt="Yala National Park Safari" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Yala National Park</h3>
+                        <p class="text-gray-600 mb-4">Discover the world's highest leopard density, elephants, and
+                            diverse wildlife in Yala's stunning landscapes.</p>
+                        <a href="yala.html" class="text-yellow-400 font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+                <div class="tour-card bg-gray-100 rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="images/ele.jpg" alt="Udawalawe National Park Safari" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Udawalawe National Park</h3>
+                        <p class="text-gray-600 mb-4">Experience guaranteed elephant sightings and visit the Elephant
+                            Transit Home.</p>
+                        <a href="udawalawe.html" class="text-yellow-400 font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+                <div class="tour-card bg-gray-100 rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="images/birds.jpg" alt="Bundala National Park Safari" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Bundala</h3>
+                        <p class="text-gray-600 mb-4">A birdwatcher's paradise with migratory birds, crocodiles, and
+                            elephants.</p>
+                        <a href="bundala.html" class="text-yellow-400 font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+                <div class="tour-card bg-gray-100 rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="images/ele5.jpg" alt="Weheragala National Park Safari" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Weheragala National Park</h3>
+                        <p class="text-gray-600 mb-4">Explore the serene Yala Block 5 with diverse wildlife and fewer
+                            crowds.</p>
+                        <a href="weheragala.html" class="text-yellow-400 font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="py-20 booking-section" id="booking">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Book Your Adventure via WhatsApp</h2>
+            <div class="max-w-lg mx-auto bg-transparent p-8 rounded-lg shadow-lg" data-aos="zoom-in">
+                <div class="mb-6">
+                    <label class="block text-white mb-2 font-semibold" for="name">Name</label>
+                    <input type="text" id="name" name="name" class="w-full p-3 rounded-lg" placeholder="Your Name"
+                        required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white mb-2 font-semibold" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg" placeholder="Your Email"
+                        required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white mb-2 font-semibold" for="safari">Preferred Safari</label>
+                    <select id="safari" name="safari" class="w-full p-3 rounded-lg" required>
+                        <option value="yala">Yala National Park</option>
+                        <option value="udawalawe">Udawalawe National Park</option>
+                        <option value="bundala">Bundala National Park</option>
+                        <option value="weheragala">Weheragala National Park</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white mb-2 font-semibold" for="date">Preferred Date</label>
+                    <input type="date" id="date" name="date" class="w-full p-3 rounded-lg" required>
+                </div>
+                <button onclick="sendToWhatsApp()"
+                    class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 w-full flex items-center justify-center">
+                    <i class="fab fa-whatsapp mr-2"></i> Book via WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-100" id="testimonials">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">What Our Guests Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in">
+                    <div class="flex items-center mb-4">
+                        <img src="images/user1.jpg" alt="Emily Johnson, Safari Guest"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h3 class="text-lg font-semibold">Emily Johnson</h3>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"An incredible experience! Saw leopards and elephants up close in Yala. The
+                        guide was knowledgeable and friendly!"</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <img src="images/user2.jpg" alt="Michael Lee, Safari Guest"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h3 class="text-lg font-semibold">Michael Lee</h3>
+                            <div class="star-rating">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Udawalawe was breathtaking. The jeep was comfortable, and the driver made
+                        sure we had the best views!"</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <img src="images/user3.jpg" alt="Sophie Brown, Safari Guest"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h3 class="text-lg font-semibold">Sophie Brown</h3>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Bundala's birdlife was stunning! Highly recommend this tour for nature
+                        lovers."</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <img src="images/user4.jpg" alt="James Patel, Safari Guest"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h3 class="text-lg font-semibold">James Patel</h3>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The Weheragala safari was serene and unforgettable. Our guide's expertise
+                        made it truly special!"</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="flex items-center mb-4">
+                        <img src="images/user5.jpg" alt="Anna Schmidt, Safari Guest"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h3 class="text-lg font-semibold">Anna Schmidt</h3>
+                            <div class="star-rating">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Loved the private safari! The flexibility and attention to detail were
+                        top-notch."</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="flex items-center mb-4">
+                        <img src="images/user6.jpg" alt="Liam Wong, Safari Guest"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h3 class="text-lg font-semibold">Liam Wong</h3>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Yala's wildlife was a dream come true. The team ensured we had an amazing
+                        adventure!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">Our Safari Packages</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="package-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Half-Day Safari</h3>
+                    <p class="text-gray-600 mb-4">4-hour tour, expert guide, jeep transport, park fees included.</p>
+                    <p class="text-2xl font-bold text-yellow-400 mb-4">$50/person</p>
+                    <a href="#booking"
+                        class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300">Book
+                        Now</a>
+                </div>
+                <div class="package-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Full-Day Safari</h3>
+                    <p class="text-gray-600 mb-4">8-hour tour, expert guide, jeep transport, meals, park fees included.
+                    </p>
+                    <p class="text-2xl font-bold text-yellow-400 mb-4">$100/person</p>
+                    <a href="#booking"
+                        class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300">Book
+                        Now</a>
+                </div>
+                <div class="package-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Private Safari</h3>
+                    <p class="text-gray-600 mb-4">Customized tour, private jeep, flexible schedule, all-inclusive.</p>
+                    <p class="text-2xl font-bold text-yellow-400 mb-4">$200/group</p>
+                    <a href="#booking" class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full
+
+ font-semibold hover:bg-yellow-500 transition duration-300">Book
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800" data-aos="fade-up">Why Choose Us</h2>
+            <div class="flex flex-wrap justify-center gap-12">
+                <div class="trust-badge" data-aos="zoom-in">
+                    <i class="fas fa-lock text-4xl text-yellow-400 mb-2"></i>
+                    <p class="text-gray-600">Secure Booking</p>
+                </div>
+                <div class="trust-badge" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-certificate text-4xl text-yellow-400 mb-2"></i>
+                    <p class="text-gray-600">Licensed Operator</p>
+                </div>
+                <div class="trust-badge" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-leaf text-4xl text-yellow-400 mb-2"></i>
+                    <p class="text-gray-600">Eco-Friendly Tours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">Frequently Asked Questions
+            </h2>
+            <div class="max-w-2xl mx-auto" data-aos="zoom-in">
+                <div class="faq-item mb-4">
+                    <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
+                        onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">What should I bring on the safari?</span>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-gray-50">Comfortable clothing, sunscreen, a hat, water bottle,
+                        and binoculars are recommended.</div>
+                </div>
+                <div class="faq-item mb-4">
+                    <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
+                        onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">Is the safari safe?</span>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-gray-50">Yes, our experienced guides and drivers follow strict
+                        safety protocols to ensure a secure experience.</div>
+                </div>
+                <div class="faq-item mb-4">
+                    <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
+                        onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">What is your cancellation policy?</span>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-gray-50">Cancellations made 48 hours in advance are fully
+                        refundable. Contact us for details.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-gray-800" data-aos="fade-up">Stay Updated</h2>
+            <p class="text-gray-600 mb-6">Subscribe to our newsletter for exclusive offers and safari updates!</p>
+            <form action="https://your-mailchimp-url" method="POST" class="max-w-md mx-auto" data-aos="zoom-in">
+                <input type="email" name="EMAIL" placeholder="Enter your email"
+                    class="w-full p-3 mb-4 border rounded-lg" required>
+                <button type="submit"
+                    class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+94766334101" class="whatsapp-btn" data-aos="fade-up">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.10.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.10.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
+        </svg>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Yala Safari Jeep Tour. All rights reserved.</p>
+            <p class="mt-2">Contact: <a href="tel:+94766334101" class="text-yellow-400 hover:underline">+94 766 334
+                    101</a> | <a href="mailto:info@yalasafarijeeptour.com"
+                    class="text-yellow-400 hover:underline">info@yalasafarijeeptour.com</a></p>
+            <div class="mt-4 flex justify-center gap-4">
+                <a href="https://facebook.com/yalasafari" class="text-yellow-400 hover:underline"><i
+                        class="fab fa-facebook-f mr-2"></i>Facebook</a>
+                <a href="https://instagram.com/yalasafari" class="text-yellow-400 hover:underline"><i
+                        class="fab fa-instagram mr-2"></i>Instagram</a>
+                <a href="https://twitter.com/yalasafari" class="text-yellow-400 hover:underline"><i
+                        class="fab fa-twitter mr-2"></i>Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('hidden');
+            content.classList.toggle('show');
+        }
+
+        function sendToWhatsApp() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const safari = document.getElementById('safari').value;
+            const date = document.getElementById('date').value;
+
+            if (name && email && safari && date) {
+                const message = `Hello, I'm ${name} (${email}). I'd like to book a ${safari} safari for ${date}.`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/+94766334101?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+            } else {
+                alert('Please fill out all fields before booking.');
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Slideshow functionality
+        function startSlideshow() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            showSlide(currentSlide);
+            setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        window.addEventListener('load', startSlideshow);
+
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+
+</html>

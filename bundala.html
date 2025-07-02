@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore Bundala National Park with Morning, Afternoon, and Full-Day Safari Tours. Book your wildlife adventure with Yala Safari Jeep Tour!">
+    <meta name="keywords"
+        content="Bundala Safari, Bundala National Park, Morning Safari, Afternoon Safari, Full-Day Safari, Sri Lanka Wildlife Tours">
+    <meta name="author" content="Yala Safari Jeep Tour">
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Bundala National Park Safari Tours - Yala Safari Jeep Tour">
+    <meta property="og:description"
+        content="Join our Morning, Afternoon, or Full-Day Safari Tours in Bundala National Park for an unforgettable wildlife experience.">
+    <meta property="og:image" content="images/birds.jpg">
+    <meta property="og:url" content="https://yourwebsite.com/bundala.html">
+    <title>Bundala National Park Safari Tours - Yala Safari Jeep Tour</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .navbar {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a3c34 0%, #4a7043 100%);
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 8s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tour-card,
+        .testimonial-card,
+        .wildlife-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+        }
+
+        .tour-card:hover,
+        .testimonial-card:hover,
+        .wildlife-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+        }
+
+        .tour-card img,
+        .testimonial-card img,
+        .wildlife-card img {
+            transition: transform 0.3s ease;
+        }
+
+        .tour-card:hover img,
+        .testimonial-card:hover img,
+        .wildlife-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .whatsapp-btn:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1001;
+        }
+
+        .whatsapp-tooltip h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .whatsapp-tooltip ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+        }
+
+        .whatsapp-tooltip li {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sticky-cta {
+            z-index: 50;
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+        }
+
+        .sticky-cta a,
+        .tour-card a,
+        .testimonial-card a,
+        .wildlife-card a {
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .sticky-cta a:hover,
+        .tour-card a:hover,
+        .testimonial-card a:hover,
+        .wildlife-card a:hover {
+            transform: scale(1.05);
+        }
+
+        .trust-badge i {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .trust-badge i:hover {
+            transform: scale(1.1);
+            color: #f59e0b;
+        }
+
+        .star-rating {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .faq-item .faq-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .faq-item .faq-content.show {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .booking-section {
+            background: linear-gradient(135deg, #1a3c34, #4a7043);
+            color: white;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .booking-section input,
+        .booking-section select {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .booking-section input::placeholder,
+        .booking-section select {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .booking-section button {
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+        }
+
+        .booking-section button:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .tour-card,
+            .testimonial-card,
+            .wildlife-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .whatsapp-tooltip {
+                width: 200px;
+                bottom: 60px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 bg-transparent">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="images/Final.png" alt="Yala Safari Jeep Tour Logo" class="h-12 mr-3">
+                <a href="index.html" class="text-2xl font-bold text-white">Yala Safari Jeep Tour</a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-white hover:text-yellow-400">Home</a>
+                <a href="yala.html" class="text-white hover:text-yellow-400">Yala</a>
+                <a href="udawalawe.html" class="text-white hover:text-yellow-400">Udawalawe</a>
+                <a href="bundala.html" class="text-white hover:text-yellow-400">Bundala</a>
+                <a href="weheragala.html" class="text-white hover:text-yellow-400">Weheragala</a>
+                <a href="about.html" class="text-white hover:text-yellow-400">About</a>
+                <a href="contact.html" class="text-white hover:text-yellow-400">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <a href="index.html" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
+            <a href="yala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Yala</a>
+            <a href="udawalawe.html" class="block px-4 py-2 text-white hover:bg-gray-700">Udawalawe</a>
+            <a href="bundala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Bundala</a>
+            <a href="weheragala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Weheragala</a>
+            <a href="about.html" class="block px-4 py-2 text-white hover:bg-gray-700">About</a>
+            <a href="contact.html" class="block px-4 py-2 text-white hover:bg-gray-700">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta fixed bottom-0 w-full bg-yellow-400 text-gray-800 py-3 text-center" data-aos="fade-up">
+        <p class="inline-block mr-4 font-semibold">Ready for an adventure? Book your safari now!</p>
+        <a href="#booking"
+            class="bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition duration-300">Book
+            Now</a>
+    </div>
+
+    <!-- Hero Section with Image Slideshow -->
+    <section class="hero" data-aos="zoom-in">
+        <div class="slideshow">
+            <img src="images/birds.jpg" alt="Birds in Bundala" class="slide active">
+            <img src="images/birds2.jpg" alt="Bundala Wetlands" class="slide">
+            <img src="images/flamingos.jpg" alt="Bundala Flamingos" class="slide">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Bundala National Park Safaris</h1>
+            <p class="text-lg md:text-xl mb-6">Discover a birdwatcher’s paradise with flamingos, pelicans, and more in
+                Sri Lanka’s UNESCO Biosphere Reserve.</p>
+            <a href="#booking"
+                class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300">Book
+                Your Safari</a>
+        </div>
+    </section>
+
+    <!-- Wildlife Highlights Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">Wildlife Highlights in
+                Bundala</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="wildlife-card bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in">
+                    <img src="images/birds.jpg" alt="Flamingos in Bundala" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Flamingos</h3>
+                        <p class="text-gray-600">Marvel at vibrant flamingos flocking to Bundala’s lagoons during the
+                            migration season.</p>
+                    </div>
+                </div>
+                <div class="wildlife-card bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in"
+                    data-aos-delay="100">
+                    <img src="images/crocodile.jpg" alt="Crocodile in Bundala" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Crocodiles</h3>
+                        <p class="text-gray-600">Spot estuarine crocodiles basking in Bundala’s wetlands and waterways.
+                        </p>
+                    </div>
+                </div>
+                <div class="wildlife-card bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in"
+                    data-aos-delay="200">
+                    <img src="images/birds2.jpg" alt="Wetlands in Bundala" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Wetlands</h3>
+                        <p class="text-gray-600">Explore diverse ecosystems, home to pelicans, storks, and other
+                            migratory birds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safari Tours Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Bundala Safari Tours</h2>
+            <p class="text-lg text-gray-600 mb-8 text-center" data-aos="fade-up" data-aos-delay="100">Bundala National
+                Park, a UNESCO Biosphere Reserve, is a haven for migratory birds like flamingos and pelicans, alongside
+                crocodiles, elephants, and diverse wetlands.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="tour-card bg-gray-100 rounded-lg overflow-hidden" data-aos="zoom-in">
+                    <img src="images/birds.jpg" alt="Morning Safari in Bundala" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Morning Safari</h3>
+                        <p class="text-gray-600 mb-2">4-hour tour at dawn, ideal for spotting migratory birds in their
+                            active hours.</p>
+                        <p class="text-2xl font-bold text-yellow-400 mb-2">$50/person</p>
+                        <ul class="text-gray-600 mb-4 list-disc list-inside">
+                            <li>Expert guide</li>
+                            <li>Jeep transport</li>
+                            <li>Park entrance fees</li>
+                            <li>Water and snacks</li>
+                        </ul>
+                        <a href="#booking" class="text-yellow-400 font-semibold hover:underline">Book Now</a>
+                    </div>
+                </div>
+                <div class="tour-card bg-gray-100 rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="images/birds2.jpg" alt="Afternoon Safari in Bundala" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Afternoon Safari</h3>
+                        <p class="text-gray-600 mb-2">4-hour tour in the afternoon, perfect for wetland views and
+                            birdwatching.</p>
+                        <p class="text-2xl font-bold text-yellow-400 mb-2">$50/person</p>
+                        <ul class="text-gray-600 mb-4 list-disc list-inside">
+                            <li>Expert guide</li>
+                            <li>Jeep transport</li>
+                            <li>Park entrance fees</li>
+                            <li>Water and snacks</li>
+                        </ul>
+                        <a href="#booking" class="text-yellow-400 font-semibold hover:underline">Book Now</a>
+                    </div>
+                </div>
+                <div class="tour-card bg-gray-100 rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="images/flamingos.jpg" alt="Full-Day Safari in Bundala" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Full-Day Safari</h3>
+                        <p class="text-gray-600 mb-2">8-hour tour for an immersive birdwatching and wildlife experience.
+                        </p>
+                        <p class="text-2xl font-bold text-yellow-400 mb-2">$100/person</p>
+                        <ul class="text-gray-600 mb-4 list-disc list-inside">
+                            <li>Expert guide</li>
+                            <li>Jeep transport</li>
+                            <li>Park entrance fees</li>
+                            <li>Meals and refreshments</li>
+                        </ul>
+                        <a href="#booking" class="text-yellow-400 font-semibold hover:underline">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="py-16 booking-section" id="booking">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Book Your Bundala Safari via WhatsApp
+            </h2>
+            <div class="max-w-lg mx-auto bg-transparent p-8 rounded-lg shadow-lg" data-aos="zoom-in">
+                <div class="mb-6">
+                    <label class="block text-white mb-2 font-semibold" for="name">Name</label>
+                    <input type="text" id="name" name="name" class="w-full p-3 rounded-lg" placeholder="Your Name"
+                        required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white mb-2 font-semibold" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg" placeholder="Your Email"
+                        required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white mb-2 font-semibold" for="safari">Safari Type</label>
+                    <select id="safari" name="safari" class="w-full p-3 rounded-lg" required>
+                        <option value="morning">Morning Safari</option>
+                        <option value="afternoon">Afternoon Safari</option>
+                        <option value="full-day">Full-Day Safari</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-white mb-2 font-semibold" for="date">Preferred Date</label>
+                    <input type="date" id="date" name="date" class="w-full p-3 rounded-lg" required>
+                </div>
+                <button onclick="sendToWhatsApp()"
+                    class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 w-full flex items-center justify-center">
+                    <i class="fab fa-whatsapp mr-2"></i> Book via WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-100" id="testimonials">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up">What Our Guests Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in">
+                    <div class="flex items-center mb-4">
+                        <img src="images/user1.jpg" alt="Anna Smith, Safari Guest"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h3 class="text-lg font-semibold">Anna Smith</h3>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The Bundala morning safari was a birdwatcher’s dream! So many flamingos
+                        and an amazing guide."</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <img src="images/user2.jpg" alt="James Carter, Safari Guest"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h3 class="text-lg font-semibold">James Carter</h3>
+                            <div class="star-rating">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Loved the afternoon safari in Bundala. The wetlands were stunning, and we
+                        saw crocodiles!"</p>
+                </div>
+                <div class="testimonial-card bg-white rounded-lg p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <img src="images/user3.jpg" alt="Lily Patel, Safari Guest"
+                            class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h3 class="text-lg font-semibold">Lily Patel</h3>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The full-day Bundala tour was incredible. Perfect for birdwatching and
+                        exploring the lagoons."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="py-8 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-6" data-aos="fade-up">Why Choose Us</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="trust-badge" data-aos="zoom-in">
+                    <i class="fas fa-lock text-4xl text-yellow-400 mb-2"></i>
+                    <p class="text-gray-600">Secure Booking</p>
+                </div>
+                <div class="trust-badge" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-certificate text-4xl text-yellow-400 mb-2"></i>
+                    <p class="text-gray-600">Licensed Operator</p>
+                </div>
+                <div class="trust-badge" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-leaf text-4xl text-yellow-400 mb-2"></i>
+                    <p class="text-gray-600">Eco-Friendly Tours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="max-w-2xl mx-auto" data-aos="zoom-in">
+                <div class="faq-item mb-4">
+                    <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
+                        onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">What wildlife can I see in Bundala?</span>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-gray-50">Bundala is famous for migratory birds like flamingos
+                        and pelicans, as well as crocodiles, elephants, and turtles.</div>
+                </div>
+                <div class="faq-item mb-4">
+                    <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
+                        onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">What is the best time for a Bundala safari?</span>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-gray-50">The bird migration season (October to March) is
+                        ideal, but Bundala offers great wildlife viewing year-round.</div>
+                </div>
+                <div class="faq-item mb-4">
+                    <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
+                        onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">Are binoculars provided for birdwatching?</span>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-gray-50">We recommend bringing your own binoculars for the
+                        best experience, but our guides carry spares if needed.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Links Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Follow Our Adventures</h2>
+            <div class="flex justify-center gap-8" data-aos="zoom-in">
+                <a href="https://facebook.com/yalasafari" class="text-yellow-400 hover:underline text-lg"><i
+                        class="fab fa-facebook-f mr-2"></i>Facebook</a>
+                <a href="https://instagram.com/yalasafari" class="text-yellow-400 hover:underline text-lg"><i
+                        class="fab fa-instagram mr-2"></i>Instagram</a>
+                <a href="https://twitter.com/yalasafari" class="text-yellow-400 hover:underline text-lg"><i
+                        class="fab fa-twitter mr-2"></i>Twitter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button with Tooltip -->
+    <div class="whatsapp-btn" data-aos="fade-up">
+        <a href="https://wa.me/+94766334101?text=Hi%20Yala%20Safari!%20I%27m%20interested%20in%20a%20Bundala%20National%20Park%20safari."
+            class="flex items-center justify-center">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.1.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.1.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
+            </svg>
+        </a>
+        <div class="whatsapp-tooltip">
+            <h4>Ask About Bundala Safaris!</h4>
+            <ul>
+                <li>Best time for bird migration?</li>
+                <li>Binoculars provided for birdwatching?</li>
+                <li>Group discounts available?</li>
+                <li>What’s included in a full-day tour?</li>
+                <li>Hotel pick-up for Bundala?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Yala Safari Jeep Tour. All rights reserved.</p>
+            <p class="mt-2">Contact: <a href="tel:+94766334101" class="text-yellow-400 hover:underline">+94 766 334
+                    101</a> | <a href="mailto:info@yalasafarijeeptour.com"
+                    class="text-yellow-400 hover:underline">info@yalasafarijeeptour.com</a></p>
+            <div class="mt-4 flex justify-center gap-4">
+                <a href="https://facebook.com/yalasafari" class="text-yellow-400 hover:underline"><i
+                        class="fab fa-facebook-f mr-2"></i>Facebook</a>
+                <a href="https://instagram.com/yalasafari" class="text-yellow-400 hover:underline"><i
+                        class="fab fa-instagram mr-2"></i>Instagram</a>
+                <a href="https://twitter.com/yalasafari" class="text-yellow-400 hover:underline"><i
+                        class="fab fa-twitter mr-2"></i>Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('hidden');
+            content.classList.toggle('show');
+        }
+
+        function sendToWhatsApp() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const safari = document.getElementById('safari').value;
+            const date = document.getElementById('date').value;
+
+            if (name && email && safari && date) {
+                const message = `Hello, I'm ${name} (${email}). I'd like to book a ${safari} safari in Bundala for ${date}.`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/+94766334101?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+            } else {
+                alert('Please fill out all fields before booking.');
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Slideshow functionality
+        function startSlideshow() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            showSlide(currentSlide);
+            setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        window.addEventListener('load', startSlideshow);
+
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+
+</html>

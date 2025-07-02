@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contact Yala Safari Jeep Tour to book your wildlife adventure in Yala, Bundala, Udawalawe, or Weheragala National Parks.">
+    <meta name="keywords"
+        content="Yala Safari, Bundala Safari, Udawalawe Safari, Weheragala Safari, Contact, Sri Lanka Wildlife Tours">
+    <meta name="author" content="Yala Safari Jeep Tour">
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Contact Us - Yala Safari Jeep Tour">
+    <meta property="og:description"
+        content="Get in touch with Yala Safari Jeep Tour to plan your safari adventure in Sri Lanka’s top national parks.">
+    <meta property="og:image" content="images/tiger.jpg">
+    <meta property="og:url" content="https://yourwebsite.com/contact.html">
+    <title>Contact Us - Yala Safari Jeep Tour</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .navbar {
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-section {
+            background: url('images/safari-bg.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1;
+        }
+
+        .contact-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 12px;
+            background: white;
+            z-index: 2;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-field {
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #facc15;
+            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 18px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+
+        .sticky-cta {
+            z-index: 50;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .trust-badge i {
+            transition: transform 0.3s ease;
+        }
+
+        .trust-badge i:hover {
+            transform: scale(1.2);
+        }
+
+        .faq-item .faq-content {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        .social-icon {
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #facc15 !important;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .contact-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-section {
+                background-attachment: scroll;
+            }
+
+            .navbar {
+                padding: 1rem;
+            }
+
+            .sticky-cta {
+                padding: 0.75rem;
+            }
+
+            .sticky-cta p {
+                font-size: 0.9rem;
+            }
+
+            .sticky-cta a {
+                padding: 0.5rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .map-iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 bg-transparent">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="images/Final.png" alt="Yala Safari Jeep Tour Logo" class="h-12 mr-3 sm:h-10">
+                <a href="index.html" class="text-2xl font-bold text-white sm:text-xl">Yala Safari Jeep Tour</a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-white hover:text-yellow-400">Home</a>
+                <a href="yala.html" class="text-white hover:text-yellow-400">Yala</a>
+                <a href="udawalawe.html" class="text-white hover:text-yellow-400">Udawalawe</a>
+                <a href="bundala.html" class="text-white hover:text-yellow-400">Bundala</a>
+                <a href="weheragala.html" class="text-white hover:text-yellow-400">Weheragala</a>
+                <a href="about.html" class="text-white hover:text-yellow-400">About</a>
+                <a href="contact.html" class="text-white hover:text-yellow-400">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <a href="index.html" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
+            <a href="yala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Yala</a>
+            <a href="udawalawe.html" class="block px-4 py-2 text-white hover:bg-gray-700">Udawalawe</a>
+            <a href="bundala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Bundala</a>
+            <a href="weheragala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Weheragala</a>
+            <a href="about.html" class="block px-4 py-2 text-white hover:bg-gray-700">About</a>
+            <a href="contact.html" class="block px-4 py-2 text-white hover:bg-gray-700">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta fixed bottom-0 w-full bg-yellow-400 text-gray-800 py-3 text-center" data-aos="fade-up">
+        <p class="inline-block mr-4 sm:mr-2">Ready for an adventure? Book your safari now!</p>
+        <a href="#contact-form"
+            class="bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition duration-300 sm:px-4 sm:py-2">Book
+            Now</a>
+    </div>
+
+    <!-- Hero Section with Image Slideshow -->
+    <section class="hero" data-aos="zoom-in">
+        <div class="slideshow">
+            <img src="images/tiger.jpg" alt="Yala Leopard" class="slide active">
+            <img src="images/birds.jpg" alt="Bundala Birds" class="slide">
+            <img src="images/ele.jpg" alt="Udawalawe Elephants" class="slide">
+            <img src="images/ele5.jpg" alt="Weheragala Wildlife" class="slide">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 sm:text-2xl">Contact Us</h1>
+            <p class="text-lg md:text-xl mb-6 sm:text-base">Plan your unforgettable safari adventure with us in Sri
+                Lanka’s top national parks.</p>
+            <a href="#contact-form"
+                class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 sm:px-4 sm:py-2">Send
+                Us a Message</a>
+        </div>
+    </section>
+
+    <!-- Contact Form and Info Section -->
+    <section class="py-16 contact-section relative" id="contact-form">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 font-['Playfair_Display']" data-aos="fade-up">Get in Touch
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact Form -->
+                <div class="contact-card bg-white rounded-lg shadow-lg p-8" data-aos="zoom-in">
+                    <h3 class="text-xl font-semibold mb-4">Send Us a Message</h3>
+                    <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4" id="contactForm">
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="name">Name</label>
+                            <input type="text" id="name" name="name" class="w-full p-3 border rounded-lg input-field"
+                                placeholder="Your Full Name" required>
+                            <p class="text-red-500 text-sm hidden mt-1" id="nameError">Please enter your name.</p>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="email">Email</label>
+                            <input type="email" id="email" name="email" class="w-full p-3 border rounded-lg input-field"
+                                placeholder="Your Email Address" required>
+                            <p class="text-red-500 text-sm hidden mt-1" id="emailError">Please enter a valid email.</p>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="safari">Safari Location</label>
+                            <select id="safari" name="safari" class="w-full p-3 border rounded-lg input-field" required>
+                                <option value="" disabled selected>Select a Safari</option>
+                                <option value="yala">Yala National Park</option>
+                                <option value="bundala">Bundala National Park</option>
+                                <option value="udawalawe">Udawalawe National Park</option>
+                                <option value="weheragala">Weheragala National Park</option>
+                            </select>
+                            <p class="text-red-500 text-sm hidden mt-1" id="safariError">Please select a safari
+                                location.</p>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="message">Message</label>
+                            <textarea id="message" name="message" rows="5"
+                                class="w-full p-3 border rounded-lg input-field" placeholder="Your Message or Inquiry"
+                                required></textarea>
+                            <p class="text-red-500 text-sm hidden mt-1" id="messageError">Please enter your message.</p>
+                        </div>
+                        <button type="submit"
+                            class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 w-full">Submit
+                            Inquiry</button>
+                    </form>
+                </div>
+                <!-- Contact Information -->
+                <div class="contact-card bg-white rounded-lg shadow-lg p-8" data-aos="zoom-in" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt text-yellow-400 text-3xl mr-4"></i>
+                            <p><a href="tel:+94766334101" class="text-gray-600 hover:text-yellow-400 text-lg">+94 766
+                                    334 101</a></p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-yellow-400 text-3xl mr-4"></i>
+                            <p><a href="mailto:info@yalasafarijeeptour.com"
+                                    class="text-gray-600 hover:text-yellow-400 text-lg">info@yalasafarijeeptour.com</a>
+                            </p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-whatsapp text-yellow-400 text-3xl mr-4"></i>
+                            <p><a href="https://wa.me/+94766334101"
+                                    class="text-gray-600 hover:text-yellow-400 text-lg">Chat on WhatsApp</a></p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-yellow-400 text-3xl mr-4"></i>
+                            <p class="text-gray-600 text-lg">Yala National Park, Tissamaharama, Sri Lanka</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-lg font-semibold mb-3">Follow Us</h4>
+                        <div class="flex justify-start gap-6">
+                            <a href="https://facebook.com/yalasafari" class="text-gray-600 social-icon"><i
+                                    class="fab fa-facebook-f text-3xl"></i></a>
+                            <a href="https://instagram.com/yalasafari" class="text-gray-600 social-icon"><i
+                                    class="fab fa-instagram text-3xl"></i></a>
+                            <a href="https://twitter.com/yalasafari" class="text-gray-600 social-icon"><i
+                                    class="fab fa-twitter text-3xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 font-['Playfair_Display']" data-aos="fade-up">Find Us</h2>
+            <div class="w-full h-96 rounded-lg overflow-hidden map-iframe" data-aos="zoom-in">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521104299775!2d81.42283361476945!3d6.285572995440574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae5b6b7b7a8c3a3%3A0x4e6c7b9e7f1e5c8!2sYala%20National%20Park!5e0!3m2!1sen!2slk!4v1665761234567!5m2!1sen!2slk"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 font-['Playfair_Display']" data-aos="fade-up">Frequently
+                Asked Questions</h2>
+            <div class="max-w-2xl mx-auto" data-aos="zoom-in">
+                <div class="faq-item mb-4">
+                    <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
+                        onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">How can I book a safari?</span>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-gray-50">Fill out the contact form above, call us at +94 766
+                        334 101, or message us on WhatsApp to book your safari.</div>
+                </div>
+                <div class="faq-item mb-4">
+                    <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
+                        onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">What is the response time for inquiries?</span>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-gray-50">We aim to respond to all inquiries within 24 hours.
+                        For urgent requests, please use WhatsApp or call us.</div>
+                </div>
+                <div class="faq-item mb-4">
+                    <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
+                        onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold">Can I customize my safari experience?</span>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-gray-50">Yes, we offer customizable safari packages. Please
+                        include your preferences in the message field of the contact form.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="py-8 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-6 font-['Playfair_Display']" data-aos="fade-up">Why Choose Us</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="trust-badge" data-aos="zoom-in">
+                    <i class="fas fa-lock text-5xl text-yellow-400 mb-3"></i>
+                    <p class="text-lg">Secure Booking</p>
+                </div>
+                <div class="trust-badge" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-certificate text-5xl text-yellow-400 mb-3"></i>
+                    <p class="text-lg">Licensed Operator</p>
+                </div>
+                <div class="trust-badge" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-leaf text-5xl text-yellow-400 mb-3"></i>
+                    <p class="text-lg">Eco-Friendly Tours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+94766334101" class="whatsapp-btn" data-aos="fade-up">
+        <svg class="w-8 h-8 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.1.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.1.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
+        </svg>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Yala Safari Jeep Tour. All rights reserved.</p>
+            <p class="mt-2">Contact: <a href="tel:+94766334101" class="text-yellow-400 hover:underline">+94 766 334
+                    101</a> | <a href="mailto:info@yalasafarijeeptour.com"
+                    class="text-yellow-400 hover:underline">info@yalasafarijeeptour.com</a></p>
+            <div class="mt-4 flex justify-center gap-4">
+                <a href="https://facebook.com/yalasafari" class="text-yellow-400 hover:underline"><i
+                        class="fab fa-facebook-f mr-2"></i>Facebook</a>
+                <a href="https://instagram.com/yalasafari" class="text-yellow-400 hover:underline"><i
+                        class="fab fa-instagram mr-2"></i>Instagram</a>
+                <a href="https://twitter.com/yalasafari" class="text-yellow-400 hover:underline"><i
+                        class="fab fa-twitter mr-2"></i>Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('hidden');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Slideshow functionality
+        function startSlideshow() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            showSlide(currentSlide);
+            setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        // Form validation
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const safari = document.getElementById('safari').value;
+            const message = document.getElementById('message').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            let isValid = true;
+
+            // Reset error messages
+            document.getElementById('nameError').classList.add('hidden');
+            document.getElementById('emailError').classList.add('hidden');
+            document.getElementById('safariError').classList.add('hidden');
+            document.getElementById('messageError').classList.add('hidden');
+
+            if (!name) {
+                document.getElementById('nameError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!email || !emailRegex.test(email)) {
+                document.getElementById('emailError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!safari) {
+                document.getElementById('safariError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!message) {
+                document.getElementById('messageError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+
+        window.addEventListener('load', startSlideshow);
+
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+
+</html>
