@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Discover Yala Safari Jeep Tour’s story, mission, and team. Join us for eco-friendly safari adventures in Weheragala, Yala, Udawalawe, and Bundala.">
+        content="Discover the story, mission, and expert team behind Yala Safari Jeep Tour, your premier choice for wildlife adventures in Sri Lanka’s iconic national parks.">
     <meta name="keywords"
-        content="Yala Safari Jeep Tour, About Us, Sri Lanka Safari, Eco-Friendly Tours, Weheragala, Yala, Udawalawe, Bundala">
+        content="Yala Safari, Sri Lanka Safari.gc Safari Tours, About Yala Safari, Wildlife Tours Sri Lanka, Eco-Friendly Safaris">
     <meta name="author" content="Yala Safari Jeep Tour">
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="About Yala Safari Jeep Tour - Your Wildlife Adventure Partner">
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title Relat=" nofollow"title="About Yala Safari Jeep Tour - Sri Lanka Wildlife Adventures">
     <meta property="og:description"
-        content="Learn about our passion for Sri Lanka’s wildlife, our expert team, and our commitment to conservation.">
+        content="Learn about our passion for wildlife, commitment to conservation, and expert team delivering unforgettable safari experiences in Sri Lanka.">
     <meta property="og:image" content="images/team.jpg">
     <meta property="og:url" content="https://yourwebsite.com/about.html">
-    <title>About Yala Safari Jeep Tour</title>
+    <title>About Yala Safari Jeep Tour - Sri Lanka Wildlife Adventures</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap"
         rel="stylesheet">
@@ -51,25 +51,39 @@
 
         .hero {
             position: relative;
-            min-height: 80vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--primary-green), #4a7043);
         }
 
-        .parallax-bg {
+        .slideshow {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('images/ele5.jpg') no-repeat center center;
-            background-size: cover;
             z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 10s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 0.85;
+            transform: scale(1.1);
         }
 
         .hero-overlay {
@@ -92,22 +106,21 @@
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: 900;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
 
         .hero p {
-            font-size: 1.75rem;
-            max-width: 700px;
+            font-size: 1.5rem;
+            max-width: 800px;
             margin: 0 auto;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
         }
 
         .team-card,
-        .testimonial-card,
-        .mission-card,
-        .stat-card {
+        .value-card,
+        .timeline-card {
             transition: all 0.4s ease;
             border-radius: 16px;
             background: white;
@@ -115,30 +128,25 @@
         }
 
         .team-card:hover,
-        .testimonial-card:hover,
-        .mission-card:hover,
-        .stat-card:hover {
+        .value-card:hover,
+        .timeline-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
             background: linear-gradient(145deg, white, #f1f5f9);
         }
 
         .team-card img,
-        .testimonial-card img,
-        .mission-card img {
+        .testimonial-card img {
             transition: transform 0.5s ease;
             border-radius: 12px 12px 0 0;
+            object-fit: cover;
+            width: 100%;
+            height: 64px;
         }
 
         .team-card:hover img,
-        .testimonial-card:hover img,
-        .mission-card:hover img {
+        .testimonial-card:hover img {
             transform: scale(1.08);
-        }
-
-        .team-card img {
-            border-radius: 50%;
-            object-fit: cover;
         }
 
         .whatsapp-btn {
@@ -157,42 +165,6 @@
         .whatsapp-btn:hover {
             transform: scale(1.15);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .whatsapp-btn:hover .whatsapp-tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .whatsapp-tooltip {
-            position: absolute;
-            bottom: 70px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            width: 250px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 1001;
-        }
-
-        .whatsapp-tooltip h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .whatsapp-tooltip ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-        }
-
-        .whatsapp-tooltip li {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
         }
 
         .sticky-cta {
@@ -220,171 +192,32 @@
             color: var(--accent-orange);
         }
 
-        .star-rating {
-            color: #FFD700;
-            font-size: 1.3rem;
-        }
-
-        .booking-section {
-            background: linear-gradient(135deg, var(--primary-green), #4a7043);
-            border-radius: 20px;
-            padding: 3rem;
-        }
-
-        .booking-section input,
-        .booking-section textarea {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 8px;
-            padding: 0.75rem;
-        }
-
-        .booking-section input::placeholder,
-        .booking-section textarea::placeholder {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .booking-section button {
-            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));
-            transition: all 0.3s ease;
-        }
-
-        .booking-section button:hover {
-            background: linear-gradient(135deg, var(--accent-orange), #d97706);
-            transform: translateY(-2px);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
+        .timeline-card::before {
             content: '';
             position: absolute;
+            left: -2.5rem;
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-yellow);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-card::after {
+            content: '';
+            position: absolute;
+            left: -2rem;
             top: 0;
             bottom: 0;
             width: 4px;
-            background: var(--accent-yellow);
-            left: 50%;
-            transform: translateX(-50%);
+            background: var(--primary-green);
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 3rem;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 3rem;
-            text-align: left;
-        }
-
-        .timeline-content {
-            width: 45%;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        .timeline-icon {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-yellow);
-            color: var(--neutral-gray);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-        }
-
-        .team-carousel {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .team-carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .team-card {
-            min-width: 33.33%;
-            margin: 0 1rem;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 0.75rem;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            min-width: 48px;
-            min-height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-btn:hover {
-            background: var(--accent-yellow);
-            color: var(--neutral-gray);
-        }
-
-        .carousel-btn.prev {
-            left: 15px;
-        }
-
-        .carousel-btn.next {
-            right: 15px;
-        }
-
-        .stat-card .count {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-yellow);
-        }
-
-        @keyframes countUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .stat-card .count {
-            animation: countUp 2s ease forwards;
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
         }
 
         @keyframes fadeInUp {
@@ -394,17 +227,23 @@
             }
         }
 
+        /* Enhanced Mobile Responsiveness */
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 3.5rem;
             }
 
             .hero p {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
 
             .navbar .container {
                 padding: 0 1.5rem;
+            }
+
+            .team-card img,
+            .testimonial-card img {
+                height: 56px;
             }
         }
 
@@ -418,43 +257,27 @@
             }
 
             .hero p {
-                font-size: 1.25rem;
+                font-size: 1.1rem;
             }
 
             .team-card,
-            .testimonial-card,
-            .mission-card,
-            .stat-card {
+            .value-card,
+            .timeline-card {
                 margin-bottom: 2rem;
             }
 
-            .whatsapp-tooltip {
-                width: 200px;
-                bottom: 60px;
-                right: 10px;
+            .timeline-card::before,
+            .timeline-card::after {
+                left: -1.5rem;
             }
 
-            .timeline::before {
-                left: 20px;
+            .timeline-card {
+                padding-left: 2.5rem;
             }
 
-            .timeline-item:nth-child(odd) .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                width: 80%;
-                margin-left: 50px;
-                text-align: left;
-            }
-
-            .timeline-icon {
-                left: 20px;
-            }
-
-            .team-card {
-                min-width: 80%;
-            }
-
-            .booking-section {
-                padding: 2rem;
+            .team-card img,
+            .testimonial-card img {
+                height: 48px;
             }
         }
 
@@ -464,7 +287,8 @@
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                padding: 0 1rem;
             }
 
             .navbar .container {
@@ -474,7 +298,7 @@
             .whatsapp-btn {
                 bottom: 80px;
                 right: 20px;
-                padding: 15px;
+                padding: 14px;
             }
 
             .sticky-cta {
@@ -486,8 +310,51 @@
                 font-size: 0.9rem;
             }
 
-            .parallax-bg {
-                background-attachment: scroll;
+            .section-title {
+                font-size: 2rem !important;
+            }
+
+            .timeline-card::before,
+            .timeline-card::after {
+                left: -1rem;
+            }
+
+            .timeline-card {
+                padding-left: 2rem;
+            }
+
+            .team-card img,
+            .testimonial-card img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem !important;
+            }
+
+            .team-card,
+            .value-card,
+            .timeline-card {
+                padding: 1rem;
+            }
+
+            .team-card img,
+            .testimonial-card img {
+                height: 32px;
             }
         }
 
@@ -537,14 +404,15 @@
                 <a href="about.html" class="text-white hover:text-yellow-300 font-medium">About</a>
                 <a href="contact.html" class="text-white hover:text-yellow-300 font-medium">Contact</a>
             </div>
-            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()" aria-label="Open menu">
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()" aria-label="Toggle menu"
+                aria-expanded="false">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-900">
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900" role="menu">
             <a href="index.html" class="block px-4 py-3 text-white hover:bg-gray-800">Home</a>
             <a href="yala.html" class="block px-4 py-3 text-white hover:bg-gray-800">Yala</a>
             <a href="udawalawe.html" class="block px-4 py-3 text-white hover:bg-gray-800">Udawalawe</a>
@@ -557,68 +425,65 @@
 
     <!-- Sticky CTA Bar -->
     <div id="sticky-cta" class="sticky-cta fixed bottom-0 w-full text-gray-900 py-4 text-center" data-aos="fade-up">
-        <p class="inline-block mr-4 font-semibold text-lg">Ready to explore with us? Contact us now!</p>
-        <a href="#contact"
-            class="bg-gray-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition duration-300"
-            aria-label="Contact us">Get in Touch</a>
+        <p class="inline-block mr-4 font-semibold text-lg">Ready for an adventure? Book your safari now!</p>
+        <a href="#booking"
+            class="bg-gray-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition duration-300">Book
+            Now</a>
         <button class="close-btn" aria-label="Close" onclick="closeStickyCTA()">×</button>
     </div>
 
-    <!-- Hero Section with Parallax -->
-    <section class="hero" data-aos="zoom-out" role="banner">
-        <div class="parallax-bg"></div>
+    <!-- Hero Section with Slideshow -->
+    <section class="hero" data-aos="zoom-out" aria-label="About Us Hero">
+        <div class="slideshow">
+            <img src="images/tiger3.jpg" alt="Leopard in Yala National Park" class="slide active">
+            <img src="images/Ele.jpg" alt="Elephants in Safari" class="slide">
+            <img src="images/birds.jpg" alt="Birds in Safari" class="slide">
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">About Yala Safari Jeep Tour</h1>
-            <p class="text-lg md:text-xl mb-8">Crafting unforgettable wildlife adventures with passion and purpose in
-                Sri Lanka’s national parks.</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#contact"
-                    class="bg-yellow-300 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-yellow-400 transition duration-300 shadow-lg"
-                    aria-label="Contact us">Contact Us</a>
-                <a href="#testimonials"
-                    class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition duration-300">See
-                    Testimonials</a>
-            </div>
+            <h1 class="text-3xl md:text-5xl font-bold mb-6">Who We Are</h1>
+            <p class="text-base md:text-xl mb-8 px-4 md:px-0">Your premier partner for authentic, eco-conscious wildlife
+                adventures across Sri Lanka’s iconic national parks.</p>
+            <a href="#booking"
+                class="bg-yellow-300 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-yellow-400 transition duration-300 shadow-lg"
+                aria-label="Book your safari">Book Your Safari</a>
         </div>
     </section>
 
     <!-- Our Story Section with Timeline -->
     <section class="py-24 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">Our Journey
-            </h2>
-            <div class="timeline" data-aos="fade-up" data-aos-delay="100">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="text-xl font-semibold mb-3 text-gray-900">2010: Founded</h3>
-                        <p class="text-gray-600">Yala Safari Jeep Tour began with a single jeep, driven by a passion for
-                            showcasing Yala’s wildlife.</p>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-map-marker-alt text-lg"></i>
-                    </div>
+            <h2 class="section-title text-3xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">
+                Our Journey</h2>
+            <div class="max-w-4xl mx-auto relative" data-aos="zoom-in">
+                <div class="timeline-card bg-white rounded-lg p-8 shadow-lg mb-8 relative" data-aos="fade-right">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">2010: Founded with Passion</h3>
+                    <p class="text-gray-600">Yala Safari Jeep Tour was established with a vision to share Sri Lanka’s
+                        wild beauty, starting with our first tours in Yala National Park.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="text-xl font-semibold mb-3 text-gray-900">2015: Expanded to Weheragala</h3>
-                        <p class="text-gray-600">We brought our eco-friendly tours to the serene Weheragala National
-                            Park (Yala Block 5).</p>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-leaf text-lg"></i>
-                    </div>
+                <div class="timeline-card bg-white rounded-lg p-8 shadow-lg mb-8 relative" data-aos="fade-right"
+                    data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">2015: Expanding Horizons</h3>
+                    <p class="text-gray-600">We expanded to Udawalawe, Bundala, and Weheragala, offering diverse safari
+                        experiences and earning recognition for excellence.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3 class="text-xl font-semibold mb-3 text-gray-900">2020: Conservation Partnership</h3>
-                        <p class="text-gray-600">Partnered with local initiatives to protect Sri Lanka’s wildlife and
-                            promote sustainable tourism.</p>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-globe text-lg"></i>
-                    </div>
+                <div class="timeline-card bg-white rounded-lg p-8 shadow-lg mb-8 relative" data-aos="fade-right"
+                    data-aos-delay="200">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">2020: Commitment to Conservation</h3>
+                    <p class="text-gray-600">Partnered with local conservation initiatives to protect wildlife habitats
+                        and promote sustainable tourism practices.</p>
                 </div>
+                <div class="timeline-card bg-white rounded-lg p-8 shadow-lg relative" data-aos="fade-right"
+                    data-aos-delay="300">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">2025: Global Trust</h3>
+                    <p class="text-gray-600">Celebrating 15 years of delivering unforgettable adventures to thousands of
+                        guests from around the world.</p>
+                </div>
+            </div>
+            <div class="text-center mt-8" data-aos="zoom-in">
+                <a href="#booking"
+                    class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 shadow-md"
+                    aria-label="Join our safari journey">Join Our Journey</a>
             </div>
         </div>
     </section>
@@ -626,201 +491,140 @@
     <!-- Our Mission Section -->
     <section class="py-24 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">Our Mission
-            </h2>
-            <div class="mission-card bg-white rounded-lg overflow-hidden shadow-lg max-w-3xl mx-auto"
-                data-aos="zoom-in">
-                <div class="p-8">
-                    <p class="text-gray-600 mb-4">To deliver immersive, eco-friendly safari experiences that connect you
-                        with Sri Lanka’s wildlife while supporting conservation efforts in parks like Weheragala and
-                        Udawalawe.</p>
-                    <a href="#contact"
-                        class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 shadow-md">Learn
-                        More</a>
+            <h2 class="section-title text-3xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">
+                Our Mission</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="value-card bg-white rounded-lg p-8 shadow-lg" data-aos="zoom-in">
+                    <i class="fas fa-binoculars text-5xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Unforgettable Adventures</h3>
+                    <p class="text-gray-600">Crafting immersive safari experiences that connect you with Sri Lanka’s
+                        wildlife and create lasting memories.</p>
+                </div>
+                <div class="value-card bg-white rounded-lg p-8 shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-leaf text-5xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Sustainable Tourism</h3>
+                    <p class="text-gray-600">Committed to eco-friendly practices that support conservation and preserve
+                        natural habitats for future generations.</p>
+                </div>
+                <div class="value-card bg-white rounded-lg p-8 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-shield-alt text-5xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Trusted Expertise</h3>
+                    <p class="text-gray-600">Led by licensed guides and a dedicated team, ensuring safe, reliable, and
+                        enriching experiences.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Carousel Section -->
+    <!-- Our Team Section -->
     <section class="py-24 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">Meet Our Team
-            </h2>
-            <div class="team-carousel" data-aos="zoom-in">
-                <div class="team-carousel-container" id="team-carousel">
-                    <div class="team-card bg-white rounded-lg overflow-hidden shadow-lg">
-                        <img src="images/team1.jpg" alt="Ranil Perera, Safari Guide" class="w-36 h-36 mx-auto mt-6">
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Ranil Perera</h3>
-                            <p class="text-gray-600 mb-2">Lead Safari Guide</p>
-                            <p class="text-gray-600">15+ years tracking leopards and elephants, ensuring unforgettable
-                                safaris.</p>
-                        </div>
-                    </div>
-                    <div class="team-card bg-white rounded-lg overflow-hidden shadow-lg">
-                        <img src="images/team2.jpg" alt="Sanjaya Fernando, Naturalist" class="w-36 h-36 mx-auto mt-6">
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Sanjaya Fernando</h3>
-                            <p class="text-gray-600 mb-2">Naturalist</p>
-                            <p class="text-gray-600">Passionate about birdlife and conservation, enriching every tour.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="team-card bg-white rounded-lg overflow-hidden shadow-lg">
-                        <img src="images/team3.jpg" alt="Nimali Wijesinghe, Operations Manager"
-                            class="w-36 h-36 mx-auto mt-6">
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Nimali Wijesinghe</h3>
-                            <p class="text-gray-600 mb-2">Operations Manager</p>
-                            <p class="text-gray-600">Ensures seamless safari experiences with organizational expertise.
-                            </p>
-                        </div>
+            <h2 class="section-title text-3xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">
+                Meet Our Expert Team</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="team-card bg-white rounded-lg overflow-hidden" data-aos="zoom-in">
+                    <img src="images/user1.jpg" alt="...Lead Safari Guide" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900">....</h3>
+                        <p class="text-gray-600 font-medium mb-2">Lead Safari Guide</p>
+                        <p class="text-gray-600">With 15+ years of guiding experience, ... deep knowledge of Sri
+                            Lanka’s wildlife ensures every tour is extraordinary.</p>
                     </div>
                 </div>
-                <div class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Previous team member">❮</div>
-                <div class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Next team member">❯</div>
+                <div class="team-card bg-white rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="images/user2.jpg" alt="Conservationist and Guide"
+                        class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900">...</h3>
+                        <p class="text-gray-600 font-medium mb-2">Conservationist & Guide</p>
+                        <p class="text-gray-600">...passion for eco-tourism and wildlife preservation brings a
+                            unique perspective to every adventure.</p>
+                    </div>
+                </div>
+                <div class="team-card bg-white rounded-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="images/user3.jpg" alt="Operations Manager"
+                        class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900">...</h3>
+                        <p class="text-gray-600 font-medium mb-2">Operations Manager</p>
+                        <p class="text-gray-600">...meticulous planning ensures seamless, high-quality safari
+                            experiences from start to finish.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Conservation Partners Section -->
     <section class="py-24 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">Our
-                Achievements</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="stat-card bg-white rounded-lg p-8 text-center" data-aos="zoom-in">
-                    <div class="count text-4xl" data-count="5000">0</div>
-                    <p class="text-gray-600 font-medium">Happy Guests</p>
+            <h2 class="section-title text-3xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">
+                Our Conservation Partners</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="value-card bg-white rounded-lg p-8 shadow-lg" data-aos="zoom-in">
+                    <img src="images/conservation1.jpg" alt="Wildlife Conservation Society"
+                        class="w-full h-40 object-cover mb-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Wildlife Conservation Society</h3>
+                    <p class="text-gray-600">Collaborating to protect leopard habitats in Yala National Park.</p>
                 </div>
-                <div class="stat-card bg-white rounded-lg p-8 text-center" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="count text-4xl" data-count="15">0</div>
-                    <p class="text-gray-600 font-medium">Years of Experience</p>
+                <div class="value-card bg-white rounded-lg p-8 shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="images/conservation2.jpg" alt="Elephant Transit Home"
+                        class="w-full h-40 object-cover mb-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Elephant Transit Home</h3>
+                    <p class="text-gray-600">Supporting the rehabilitation of orphaned elephants in Udawalawe.</p>
                 </div>
-                <div class="stat-card bg-white rounded-lg p-8 text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="count text-4xl" data-count="4">0</div>
-                    <p class="text-gray-600 font-medium">National Parks Covered</p>
+                <div class="value-card bg-white rounded-lg p-8 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="images/conservation3.jpg" alt="BirdLife International"
+                        class="w-full h-40 object-cover mb-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">BirdLife International</h3>
+                    <p class="text-gray-600">Promoting bird conservation in Bundala National Park.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonial Snippet Section -->
     <section class="py-24 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">What Our
-                Guests Say</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h2 class="section-title text-3xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">
+                What Our Guests Say</h2>
+            <div class="max-w-3xl mx-auto">
                 <div class="testimonial-card bg-white rounded-lg p-8 shadow-lg" data-aos="zoom-in">
                     <div class="flex items-center mb-4">
-                        <img src="images/user1.jpg" alt="Emma Johnson, Safari Guest"
+                        <img src="images/user1.jpg" alt="Emily Johnson, Safari Guest"
                             class="w-14 h-14 rounded-full mr-4 object-cover">
                         <div>
-                            <h3 class="text-lg font-semibold">Emma Johnson</h3>
-                            <div class="star-rating">★★★★★</div>
+                            <h3 class="text-lg font-semibold">Emily Johnson</h3>
+                            <div class="star-rating text-yellow-400">★★★★★</div>
                         </div>
                     </div>
-                    <p class="text-gray-600">"The team’s passion for wildlife made our Weheragala safari unforgettable!"
-                    </p>
-                </div>
-                <div class="testimonial-card bg-white rounded-lg p-8 shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="flex items-center mb-4">
-                        <img src="images/user2.jpg" alt="Michael Lee, Safari Guest"
-                            class="w-14 h-14 rounded-full mr-4 object-cover">
-                        <div>
-                            <h3 class="text-lg font-semibold">Michael Lee</h3>
-                            <div class="star-rating">★★★★☆</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"Expert guides and eco-friendly tours made this a trip to remember."</p>
-                </div>
-                <div class="testimonial-card bg-white rounded-lg p-8 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="flex items-center mb-4">
-                        <img src="images/user3.jpg" alt="Sophie Brown, Safari Guest"
-                            class="w-14 h-14 rounded-full mr-4 object-cover">
-                        <div>
-                            <h3 class="text-lg font-semibold">Sophie Brown</h3>
-                            <div class="star-rating">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"The conservation focus and friendly team were the highlights of our tour!"
-                    </p>
+                    <p class="text-gray-600">"An unforgettable adventure! The leopards in Yala were a highlight, and our
+                        guide’s expertise made it truly special."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Conservation Commitment Section -->
-    <section class="py-24 bg-gray-50 relative">
+    <!-- Call to Action Section -->
+    <section class="py-24 bg-gradient-to-r from-primary-green to-#4a7043 text-white text-center">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900" data-aos="fade-up">Our
-                Conservation Commitment</h2>
-            <div class="mission-card bg-white rounded-lg overflow-hidden shadow-lg max-w-3xl mx-auto relative"
-                data-aos="zoom-in">
-                <img src="images/conservation.jpg" alt="Conservation Efforts"
-                    class="w-full h-64 object-cover opacity-30">
-                <div class="p-8 absolute inset-0 flex items-center">
-                    <div>
-                        <p class="text-gray-600 mb-4">We partner with local initiatives to protect Sri Lanka’s wildlife,
-                            ensuring parks like Weheragala thrive for future generations.</p>
-                        <a href="#contact"
-                            class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 shadow-md">Learn
-                            More</a>
-                    </div>
-                </div>
-            </div>
+            <h2 class="section-title text-3xl md:text-5xl font-bold mb-8" data-aos="fade-up">Embark on Your Wild
+                Adventure</h2>
+            <p class="text-base md:text-lg mb-8 max-w-xl mx-auto" data-aos="zoom-in">Join Yala Safari Jeep Tour for an
+                unforgettable journey through Sri Lanka’s stunning national parks, guided by experts who care.</p>
+            <a href="#booking"
+                class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 shadow-lg"
+                data-aos="zoom-in" aria-label="Book your safari now">Book Your Safari Now</a>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="py-24 booking-section" id="contact">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white" data-aos="fade-up">Get in Touch</h2>
-            <div class="max-w-xl mx-auto bg-transparent p-10 rounded-2xl shadow-2xl" data-aos="zoom-in">
-                <div class="mb-6">
-                    <label class="block text-white mb-2 font-semibold" for="name">Full Name</label>
-                    <input type="text" id="name" name="name" class="w-full p-4 rounded-lg" placeholder="Your Name"
-                        required aria-required="true">
-                </div>
-                <div class="mb-6">
-                    <label class="block text-white mb-2 font-semibold" for="email">Email Address</label>
-                    <input type="email" id="email" name="email" class="w-full p-4 rounded-lg" placeholder="Your Email"
-                        required aria-required="true">
-                </div>
-                <div class="mb-6">
-                    <label class="block text-white mb-2 font-semibold" for="message">Your Message</label>
-                    <textarea id="message" name="message" class="w-full p-4 rounded-lg" placeholder="Your Inquiry"
-                        rows="5" required aria-required="true"></textarea>
-                </div>
-                <button onclick="sendToWhatsApp()"
-                    class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 w-full flex items-center justify-center shadow-lg"
-                    aria-label="Send message via WhatsApp">
-                    <i class="fab fa-whatsapp mr-2 text-xl"></i> Send via WhatsApp
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- WhatsApp Button with Tooltip -->
-    <div class="whatsapp-btn" data-aos="fade-up">
-        <a href="https://wa.me/+94766334101" class="flex items-center justify-center" aria-label="Chat on WhatsApp">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.10.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.10.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
-            </svg>
-        </a>
-        <div class="whatsapp-tooltip">
-            <h4>Have Questions?</h4>
-            <ul>
-                <li>What makes your tours eco-friendly?</li>
-                <li>Who are your expert guides?</li>
-                <li>Can I customize a safari tour?</li>
-                <li>How do you support conservation?</li>
-                <li>Any group discounts available?</li>
-            </ul>
-        </div>
-    </div>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+94766334101" class="whatsapp-btn" data-aos="fade-up" aria-label="Chat on WhatsApp">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.10.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.10.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
+        </svg>
+    </a>
 
     <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" aria-label="Scroll to top">
@@ -828,7 +632,7 @@
     </button>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-gray-900 text-white py-12" role="contentinfo">
         <div class="container mx-auto px-4 text-center">
             <p class="text-lg">© 2025 Yala Safari Jeep Tour. All rights reserved.</p>
             <p class="mt-4">Contact: <a href="tel:+94766334101" class="text-yellow-400 hover:text-yellow-300">+94 766
@@ -851,8 +655,11 @@
         // Mobile menu with backdrop
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
+            const button = document.querySelector('[aria-label="Toggle menu"]');
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
             menu.classList.toggle('hidden');
             document.body.classList.toggle('overflow-hidden');
+            button.setAttribute('aria-expanded', !isExpanded);
             const backdrop = document.getElementById('menu-backdrop');
             if (!backdrop) {
                 const newBackdrop = document.createElement('div');
@@ -865,96 +672,32 @@
             }
         }
 
-        // WhatsApp contact with validation
-        function sendToWhatsApp() {
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            if (!name || !email || !message) {
-                alert('Please complete all fields to proceed with your inquiry.');
-                return;
-            }
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            const whatsappMessage = `Hello, I'm ${name} (${email}). ${message}`;
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappUrl = `https://wa.me/+94766334101?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        // Parallax effect (disabled on mobile)
-        if (window.innerWidth > 768) {
-            window.addEventListener('scroll', () => {
-                const parallax = document.querySelector('.parallax-bg');
-                const scrollPosition = window.pageYOffset;
-                parallax.style.transform = `translateY(${scrollPosition * 0.4}px)`;
-            });
-        }
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Team carousel
-        let currentSlide = 0;
-        function moveCarousel(direction) {
-            const container = document.getElementById('team-carousel');
-            const cards = document.querySelectorAll('.team-card');
-            const totalSlides = cards.length;
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            container.style.transform = `translateX(-${currentSlide * (100 / (window.innerWidth <= 768 ? 1.25 : 3))}%)`;
-        }
-
-        // Touch swipe for carousel
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const carouselContainer = document.getElementById('team-carousel');
-        carouselContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        carouselContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) {
-                moveCarousel(1);
-            } else if (touchEndX - touchStartX > 50) {
-                moveCarousel(-1);
-            }
-        });
-
-        // Count-up animation for stats
-        function startCountUp() {
-            const counters = document.querySelectorAll('.count');
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-count');
-                let count = 0;
-                const increment = target / 100;
-                const updateCount = () => {
-                    count += increment;
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count);
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCount();
-            });
-        }
-
         // Sticky CTA close
         function closeStickyCTA() {
             document.getElementById('sticky-cta').style.display = 'none';
         }
+
+        // Slideshow functionality
+        function startSlideshow() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            showSlide(currentSlide);
+            setInterval(nextSlide, 6000);
+        }
+
+        window.addEventListener('load', startSlideshow);
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -979,13 +722,10 @@
         scrollToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
         // Animate On Scroll
-        window.addEventListener('load', () => {
-            AOS.init({
-                duration: 1200,
-                easing: 'ease-out-cubic',
-                once: true
-            });
-            startCountUp();
+        AOS.init({
+            duration: 1200,
+            easing: 'ease-out-cubic',
+            once: true
         });
     </script>
 </body>

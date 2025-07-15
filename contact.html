@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description"
         content="Contact Yala Safari Jeep Tour to book your wildlife adventure in Yala, Bundala, Udawalawe, or Weheragala National Parks.">
     <meta name="keywords"
         content="Yala Safari, Bundala Safari, Udawalawe Safari, Weheragala Safari, Contact, Sri Lanka Wildlife Tours">
     <meta name="author" content="Yala Safari Jeep Tour">
-    <!-- Open Graph Meta Tags for Social Sharing -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Contact Us - Yala Safari Jeep Tour">
     <meta property="og:description"
         content="Get in touch with Yala Safari Jeep Tour to plan your safari adventure in Sri Lanka’s top national parks.">
@@ -17,35 +17,49 @@
     <meta property="og:url" content="https://yourwebsite.com/contact.html">
     <title>Contact Us - Yala Safari Jeep Tour</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-green: #1a3c34;
+            --accent-yellow: #facc15;
+            --accent-orange: #f59e0b;
+            --neutral-gray: #2d2d2d;
+            --light-bg: #f8fafc;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: var(--light-bg);
+            color: var(--neutral-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+            margin: 0;
         }
 
         .navbar {
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
         }
 
         .navbar.scrolled {
-            background-color: rgba(0, 0, 0, 0.9);
+            background: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .hero {
             position: relative;
-            height: 80vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-green), #4a7043);
         }
 
         .slideshow {
@@ -78,171 +92,264 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
             z-index: 2;
         }
 
         .hero-content {
             position: relative;
             z-index: 3;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeInUp 1.2s ease forwards;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 900;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
 
         .hero p {
-            font-size: 1.5rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
         }
 
         .contact-section {
-            background: url('images/safari-bg.jpg') center/cover no-repeat;
-            background-attachment: fixed;
+            background: linear-gradient(135deg, var(--primary-green), #4a7043);
             position: relative;
         }
 
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 1;
-        }
-
         .contact-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 12px;
+            transition: all 0.4s ease;
+            border-radius: 16px;
             background: white;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             z-index: 2;
         }
 
         .contact-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(145deg, white, #f1f5f9);
+        }
+
+        .contact-card.form-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .input-field {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            padding: 0.75rem;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .input-field:focus {
-            border-color: #facc15;
+            border-color: var(--accent-yellow);
             box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .error-message {
+            color: #ff4d4d;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
         }
 
         .whatsapp-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
+            bottom: 90px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            padding: 18px;
+            padding: 20px;
             border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
         }
 
         .whatsapp-btn:hover {
-            background-color: #128C7E;
+            transform: scale(1.15);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .whatsapp-btn:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            bottom: 70px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1001;
+        }
+
+        .whatsapp-tooltip h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .whatsapp-tooltip ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+        }
+
+        .whatsapp-tooltip li {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
 
         .sticky-cta {
             z-index: 50;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));
+            padding: 1rem;
+        }
+
+        .sticky-cta .close-btn {
+            font-size: 1.5rem;
+            color: var(--neutral-gray);
+            transition: color 0.3s;
+        }
+
+        .sticky-cta .close-btn:hover {
+            color: #000;
         }
 
         .trust-badge i {
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .trust-badge i:hover {
-            transform: scale(1.2);
+            transform: scale(1.3);
+            color: var(--accent-orange);
         }
 
         .faq-item .faq-content {
-            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
             overflow: hidden;
         }
 
-        .social-icon {
-            transition: color 0.3s ease;
+        .faq-item .faq-content.show {
+            max-height: 200px;
+            padding: 1rem;
         }
 
-        .social-icon:hover {
-            color: #facc15 !important;
+        .faq-item button {
+            transition: all 0.3s ease;
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        .faq-item button:hover {
+            background: var(--accent-yellow);
+            color: var(--neutral-gray);
+        }
+
+        .map-iframe {
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: clamp(2rem, 5vw, 3.5rem);
             }
 
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            .hero p {
+                font-size: clamp(1rem, 2.5vw, 1.5rem);
             }
 
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            .navbar .container {
+                padding: 0 1.5rem;
             }
         }
 
         @media (max-width: 768px) {
             .hero {
-                height: 60vh;
+                min-height: 70vh;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: clamp(1.75rem, 4vw, 2.5rem);
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: clamp(0.9rem, 2vw, 1.25rem);
             }
 
             .contact-card {
-                margin-bottom: 1.5rem;
+                margin-bottom: 2rem;
             }
 
-            .contact-section {
-                background-attachment: scroll;
+            .map-iframe {
+                height: 300px;
             }
 
-            .navbar {
-                padding: 1rem;
-            }
-
-            .sticky-cta {
-                padding: 0.75rem;
-            }
-
-            .sticky-cta p {
-                font-size: 0.9rem;
-            }
-
-            .sticky-cta a {
-                padding: 0.5rem 1.5rem;
-                font-size: 0.9rem;
+            .whatsapp-tooltip {
+                width: 200px;
+                bottom: 60px;
+                right: 10px;
             }
         }
 
         @media (max-width: 640px) {
+            .hero {
+                min-height: 60vh;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: clamp(1.5rem, 3.5vw, 2rem);
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: clamp(0.8rem, 1.8vw, 1rem);
+            }
+
+            .navbar .container {
+                padding: 0 1rem;
+            }
+
+            .whatsapp-btn {
+                bottom: 80px;
+                right: 20px;
+                padding: 15px;
+            }
+
+            .sticky-cta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .sticky-cta p {
+                font-size: 0.9rem;
             }
 
             .contact-card {
@@ -250,123 +357,174 @@
             }
 
             .map-iframe {
-                height: 300px;
+                height: 250px;
             }
+
+            .faq-item .faq-content.show {
+                max-height: 300px;
+            }
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 150px;
+            right: 30px;
+            background: var(--accent-yellow);
+            color: var(--neutral-gray);
+            padding: 14px;
+            border-radius: 50%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            border: none;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            background: var(--accent-orange);
+            transform: scale(1.1);
+        }
+
+        a:focus,
+        button:focus,
+        select:focus,
+        textarea:focus,
+        input:focus {
+            outline: 3px solid var(--accent-yellow);
+            outline-offset: 3px;
+        }
+
+        .next-page-nav {
+            transition: all 0.3s ease;
+        }
+
+        .next-page-nav:hover {
+            background: var(--accent-orange);
+            transform: scale(1.05);
         }
     </style>
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar fixed top-0 w-full z-50 bg-transparent">
+    <nav class="navbar fixed top-0 w-full z-50" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="images/Final.png" alt="Yala Safari Jeep Tour Logo" class="h-12 mr-3 sm:h-10">
-                <a href="index.html" class="text-2xl font-bold text-white sm:text-xl">Yala Safari Jeep Tour</a>
+                <img src="images/Final.png" alt="Yala Safari Jeep Tour Logo" class="h-14 mr-3" loading="lazy">
+                <a href="index.html" class="text-2xl font-bold text-white">Yala Safari Jeep Tour</a>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="index.html" class="text-white hover:text-yellow-400">Home</a>
-                <a href="yala.html" class="text-white hover:text-yellow-400">Yala</a>
-                <a href="udawalawe.html" class="text-white hover:text-yellow-400">Udawalawe</a>
-                <a href="bundala.html" class="text-white hover:text-yellow-400">Bundala</a>
-                <a href="weheragala.html" class="text-white hover:text-yellow-400">Weheragala</a>
-                <a href="about.html" class="text-white hover:text-yellow-400">About</a>
-                <a href="contact.html" class="text-white hover:text-yellow-400">Contact</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-white hover:text-yellow-300 font-medium">Home</a>
+                <a href="yala.html" class="text-white hover:text-yellow-300 font-medium">Yala</a>
+                <a href="udawalawe.html" class="text-white hover:text-yellow-300 font-medium">Udawalawe</a>
+                <a href="bundala.html" class="text-white hover:text-yellow-300 font-medium">Bundala</a>
+                <a href="weheragala.html" class="text-white hover:text-yellow-300 font-medium">Weheragala</a>
+                <a href="about.html" class="text-white hover:text-yellow-300 font-medium">About</a>
+                <a href="contact.html" class="text-white hover:text-yellow-300 font-medium">Contact</a>
             </div>
-            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()" aria-label="Open menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
-            <a href="index.html" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
-            <a href="yala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Yala</a>
-            <a href="udawalawe.html" class="block px-4 py-2 text-white hover:bg-gray-700">Udawalawe</a>
-            <a href="bundala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Bundala</a>
-            <a href="weheragala.html" class="block px-4 py-2 text-white hover:bg-gray-700">Weheragala</a>
-            <a href="about.html" class="block px-4 py-2 text-white hover:bg-gray-700">About</a>
-            <a href="contact.html" class="block px-4 py-2 text-white hover:bg-gray-700">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900">
+            <a href="index.html" class="block px-4 py-3 text-white hover:bg-gray-800">Home</a>
+            <a href="yala.html" class="block px-4 py-3 text-white hover:bg-gray-800">Yala</a>
+            <a href="udawalawe.html" class="block px-4 py-3 text-white hover:bg-gray-800">Udawalawe</a>
+            <a href="bundala.html" class="block px-4 py-3 text-white hover:bg-gray-800">Bundala</a>
+            <a href="weheragala.html" class="block px-4 py-3 text-white hover:bg-gray-800">Weheragala</a>
+            <a href="about.html" class="block px-4 py-3 text-white hover:bg-gray-800">About</a>
+            <a href="contact.html" class="block px-4 py-3 text-white hover:bg-gray-800">Contact</a>
         </div>
     </nav>
 
     <!-- Sticky CTA Bar -->
-    <div class="sticky-cta fixed bottom-0 w-full bg-yellow-400 text-gray-800 py-3 text-center" data-aos="fade-up">
-        <p class="inline-block mr-4 sm:mr-2">Ready for an adventure? Book your safari now!</p>
+    <div id="sticky-cta"
+        class="sticky-cta fixed bottom-0 w-full text-gray-900 py-4 text-center flex items-center justify-center gap-4"
+        data-aos="fade-up" role="alert">
+        <p class="font-semibold text-lg">Ready for an adventure? Book your safari now!</p>
         <a href="#contact-form"
-            class="bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition duration-300 sm:px-4 sm:py-2">Book
-            Now</a>
+            class="bg-gray-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition duration-300"
+            aria-label="Book now">Book Now</a>
+        <button class="close-btn" aria-label="Close sticky CTA" onclick="closeStickyCTA()">×</button>
     </div>
 
     <!-- Hero Section with Image Slideshow -->
-    <section class="hero" data-aos="zoom-in">
+    <section class="hero" data-aos="zoom-out">
         <div class="slideshow">
-            <img src="images/tiger.jpg" alt="Yala Leopard" class="slide active">
-            <img src="images/birds.jpg" alt="Bundala Birds" class="slide">
-            <img src="images/ele.jpg" alt="Udawalawe Elephants" class="slide">
-            <img src="images/ele5.jpg" alt="Weheragala Wildlife" class="slide">
+            <img src="images/tiger.jpg" alt="Yala Leopard" class="slide active" loading="lazy">
+            <img src="images/birds.jpg" alt="Bundala Birds" class="slide" loading="lazy">
+            <img src="images/ele.jpg" alt="Udawalawe Elephants" class="slide" loading="lazy">
+            <img src="images/ele5.jpg" alt="Weheragala Wildlife" class="slide" loading="lazy">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="text-3xl md:text-5xl font-bold mb-4 sm:text-2xl">Contact Us</h1>
-            <p class="text-lg md:text-xl mb-6 sm:text-base">Plan your unforgettable safari adventure with us in Sri
-                Lanka’s top national parks.</p>
-            <a href="#contact-form"
-                class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 sm:px-4 sm:py-2">Send
-                Us a Message</a>
+            <h1 class="mb-6">Contact Us</h1>
+            <p class="mb-8 max-w-2xl mx-auto">Plan your unforgettable safari adventure with us in Sri Lanka’s top
+                national parks.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#contact-form"
+                    class="bg-yellow-300 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-yellow-400 transition duration-300 shadow-lg"
+                    aria-label="Send message">Send Us a Message</a>
+                <a href="https://wa.me/+94766334101"
+                    class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition duration-300"
+                    aria-label="Chat on WhatsApp">Chat on WhatsApp</a>
+            </div>
         </div>
     </section>
 
     <!-- Contact Form and Info Section -->
-    <section class="py-16 contact-section relative" id="contact-form">
+    <section class="py-24 contact-section" id="contact-form">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 font-['Playfair_Display']" data-aos="fade-up">Get in Touch
-            </h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white font-['Playfair_Display']"
+                data-aos="fade-up">Get in Touch</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Contact Form -->
-                <div class="contact-card bg-white rounded-lg shadow-lg p-8" data-aos="zoom-in">
-                    <h3 class="text-xl font-semibold mb-4">Send Us a Message</h3>
-                    <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4" id="contactForm">
+                <div class="contact-card form-card p-8 rounded-2xl shadow-2xl" data-aos="zoom-in">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Send Us a Message</h3>
+                    <div class="space-y-6">
                         <div>
-                            <label class="block text-gray-700 mb-2" for="name">Name</label>
-                            <input type="text" id="name" name="name" class="w-full p-3 border rounded-lg input-field"
-                                placeholder="Your Full Name" required>
-                            <p class="text-red-500 text-sm hidden mt-1" id="nameError">Please enter your name.</p>
+                            <label class="block text-white mb-2 font-semibold" for="name">Name</label>
+                            <input type="text" id="name" name="name" class="w-full input-field"
+                                placeholder="Your Full Name" required aria-required="true">
+                            <p class="error-message hidden" id="nameError">Please enter your name.</p>
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2" for="email">Email</label>
-                            <input type="email" id="email" name="email" class="w-full p-3 border rounded-lg input-field"
-                                placeholder="Your Email Address" required>
-                            <p class="text-red-500 text-sm hidden mt-1" id="emailError">Please enter a valid email.</p>
+                            <label class="block text-white mb-2 font-semibold" for="email">Email</label>
+                            <input type="email" id="email" name="email" class="w-full input-field"
+                                placeholder="Your Email Address" required aria-required="true">
+                            <p class="error-message hidden" id="emailError">Please enter a valid email.</p>
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2" for="safari">Safari Location</label>
-                            <select id="safari" name="safari" class="w-full p-3 border rounded-lg input-field" required>
+                            <label class="block text-white mb-2 font-semibold" for="safari">Safari Location</label>
+                            <select id="safari" name="safari" class="w-full input-field" required aria-required="true">
                                 <option value="" disabled selected>Select a Safari</option>
                                 <option value="yala">Yala National Park</option>
                                 <option value="bundala">Bundala National Park</option>
                                 <option value="udawalawe">Udawalawe National Park</option>
                                 <option value="weheragala">Weheragala National Park</option>
                             </select>
-                            <p class="text-red-500 text-sm hidden mt-1" id="safariError">Please select a safari
-                                location.</p>
+                            <p class="error-message hidden" id="safariError">Please select a safari location.</p>
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2" for="message">Message</label>
-                            <textarea id="message" name="message" rows="5"
-                                class="w-full p-3 border rounded-lg input-field" placeholder="Your Message or Inquiry"
-                                required></textarea>
-                            <p class="text-red-500 text-sm hidden mt-1" id="messageError">Please enter your message.</p>
+                            <label class="block text-white mb-2 font-semibold" for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full input-field"
+                                placeholder="Your Message or Inquiry" required aria-required="true"></textarea>
+                            <p class="error-message hidden" id="messageError">Please enter your message.</p>
                         </div>
-                        <button type="submit"
-                            class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 w-full">Submit
-                            Inquiry</button>
-                    </form>
+                        <button onclick="sendToWhatsApp()"
+                            class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 w-full flex items-center justify-center shadow-lg"
+                            aria-label="Send via WhatsApp">
+                            <i class="fab fa-whatsapp mr-2 text-xl"></i> Send via WhatsApp
+                        </button>
+                    </div>
                 </div>
                 <!-- Contact Information -->
-                <div class="contact-card bg-white rounded-lg shadow-lg p-8" data-aos="zoom-in" data-aos-delay="100">
-                    <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                <div class="contact-card p-8 rounded-2xl shadow-2xl" data-aos="zoom-in" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">Contact Information</h3>
                     <div class="space-y-6">
                         <div class="flex items-center">
                             <i class="fas fa-phone-alt text-yellow-400 text-3xl mr-4"></i>
@@ -390,26 +548,33 @@
                         </div>
                     </div>
                     <div class="mt-6">
-                        <h4 class="text-lg font-semibold mb-3">Follow Us</h4>
+                        <h4 class="text-lg font-semibold mb-3 text-gray-900">Follow Us</h4>
                         <div class="flex justify-start gap-6">
-                            <a href="https://facebook.com/yalasafari" class="text-gray-600 social-icon"><i
-                                    class="fab fa-facebook-f text-3xl"></i></a>
-                            <a href="https://instagram.com/yalasafari" class="text-gray-600 social-icon"><i
-                                    class="fab fa-instagram text-3xl"></i></a>
-                            <a href="https://twitter.com/yalasafari" class="text-gray-600 social-icon"><i
-                                    class="fab fa-twitter text-3xl"></i></a>
+                            <a href="https://facebook.com/yalasafari" class="text-gray-600 hover:text-yellow-400"
+                                aria-label="Facebook"><i class="fab fa-facebook-f text-3xl"></i></a>
+                            <a href="https://instagram.com/yalasafari" class="text-gray-600 hover:text-yellow-400"
+                                aria-label="Instagram"><i class="fab fa-instagram text-3xl"></i></a>
+                            <a href="https://twitter.com/yalasafari" class="text-gray-600 hover:text-yellow-400"
+                                aria-label="Twitter"><i class="fab fa-twitter text-3xl"></i></a>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Next Page Navigation -->
+            <div class="mt-12 text-center">
+                <a href="index.html"
+                    class="next-page-nav bg-gray-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition duration-300 shadow-lg"
+                    aria-label="Back to Home">Back to Home</a>
             </div>
         </div>
     </section>
 
     <!-- Map Section -->
-    <section class="py-16 bg-gray-100">
+    <section class="py-24 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 font-['Playfair_Display']" data-aos="fade-up">Find Us</h2>
-            <div class="w-full h-96 rounded-lg overflow-hidden map-iframe" data-aos="zoom-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 font-['Playfair_Display']"
+                data-aos="fade-up">Find Us</h2>
+            <div class="w-full h-96 map-iframe" data-aos="zoom-in">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521104299775!2d81.42283361476945!3d6.285572995440574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae5b6b7b7a8c3a3%3A0x4e6c7b9e7f1e5c8!2sYala%20National%20Park!5e0!3m2!1sen!2slk!4v1665761234567!5m2!1sen!2slk"
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
@@ -419,33 +584,33 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-16 bg-white">
+    <section class="py-24 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 font-['Playfair_Display']" data-aos="fade-up">Frequently
-                Asked Questions</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 font-['Playfair_Display']"
+                data-aos="fade-up">Frequently Asked Questions</h2>
             <div class="max-w-2xl mx-auto" data-aos="zoom-in">
                 <div class="faq-item mb-4">
                     <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
-                        onclick="toggleFAQ(this)">
+                        onclick="toggleFAQ(this)" aria-expanded="false">
                         <span class="text-lg font-semibold">How can I book a safari?</span>
                     </button>
-                    <div class="faq-content hidden p-4 bg-gray-50">Fill out the contact form above, call us at +94 766
-                        334 101, or message us on WhatsApp to book your safari.</div>
+                    <div class="faq-content hidden bg-gray-50">Fill out the contact form above, call us at +94 766 334
+                        101, or message us on WhatsApp to book your safari.</div>
                 </div>
                 <div class="faq-item mb-4">
                     <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
-                        onclick="toggleFAQ(this)">
+                        onclick="toggleFAQ(this)" aria-expanded="false">
                         <span class="text-lg font-semibold">What is the response time for inquiries?</span>
                     </button>
-                    <div class="faq-content hidden p-4 bg-gray-50">We aim to respond to all inquiries within 24 hours.
-                        For urgent requests, please use WhatsApp or call us.</div>
+                    <div class="faq-content hidden bg-gray-50">We aim to respond to all inquiries within 24 hours. For
+                        urgent requests, please use WhatsApp or call us.</div>
                 </div>
                 <div class="faq-item mb-4">
                     <button class="w-full text-left p-4 bg-gray-100 rounded-lg focus:outline-none"
-                        onclick="toggleFAQ(this)">
+                        onclick="toggleFAQ(this)" aria-expanded="false">
                         <span class="text-lg font-semibold">Can I customize my safari experience?</span>
                     </button>
-                    <div class="faq-content hidden p-4 bg-gray-50">Yes, we offer customizable safari packages. Please
+                    <div class="faq-content hidden bg-gray-50">Yes, we offer customizable safari packages. Please
                         include your preferences in the message field of the contact form.</div>
                 </div>
             </div>
@@ -453,50 +618,65 @@
     </section>
 
     <!-- Trust Badges Section -->
-    <section class="py-8 bg-gray-100">
+    <section class="py-24 bg-gray-50">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold mb-6 font-['Playfair_Display']" data-aos="fade-up">Why Choose Us</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 text-gray-900 font-['Playfair_Display']" data-aos="fade-up">
+                Why Choose Us</h2>
             <div class="flex flex-wrap justify-center gap-8">
                 <div class="trust-badge" data-aos="zoom-in">
                     <i class="fas fa-lock text-5xl text-yellow-400 mb-3"></i>
-                    <p class="text-lg">Secure Booking</p>
+                    <p class="text-lg text-gray-600">Secure Booking</p>
                 </div>
                 <div class="trust-badge" data-aos="zoom-in" data-aos-delay="100">
                     <i class="fas fa-certificate text-5xl text-yellow-400 mb-3"></i>
-                    <p class="text-lg">Licensed Operator</p>
+                    <p class="text-lg text-gray-600">Licensed Operator</p>
                 </div>
                 <div class="trust-badge" data-aos="zoom-in" data-aos-delay="200">
                     <i class="fas fa-leaf text-5xl text-yellow-400 mb-3"></i>
-                    <p class="text-lg">Eco-Friendly Tours</p>
+                    <p class="text-lg text-gray-600">Eco-Friendly Tours</p>
                 </div>
             </div>
         </div>
     </section>
 
-    
+    <!-- WhatsApp Button with Tooltip -->
+    <div class="whatsapp-btn" data-aos="fade-up">
+        <a href="https://wa.me/+94766334101" class="flex items-center justify-center" aria-label="Chat on WhatsApp">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.1.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.1.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
+            </svg>
+        </a>
+        <div class="whatsapp-tooltip">
+            <h4>Have Questions?</h4>
+            <ul>
+                <li>What makes your tours eco-friendly?</li>
+                <li>Who are your expert guides?</li>
+                <li>Can I customize a safari tour?</li>
+                <li>How do you support conservation?</li>
+                <li>Any group discounts available?</li>
+            </ul>
+        </div>
+    </div>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/+94766334101" class="whatsapp-btn" data-aos="fade-up">
-        <svg class="w-8 h-8 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path
-                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.1.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.1.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
-        </svg>
-    </a>
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up text-lg"></i>
+    </button>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4 text-center">
-            <p>© 2025 Yala Safari Jeep Tour. All rights reserved.</p>
-            <p class="mt-2">Contact: <a href="tel:+94766334101" class="text-yellow-400 hover:underline">+94 766 334
-                    101</a> | <a href="mailto:info@yalasafarijeeptour.com"
-                    class="text-yellow-400 hover:underline">info@yalasafarijeeptour.com</a></p>
-            <div class="mt-4 flex justify-center gap-4">
-                <a href="https://facebook.com/yalasafari" class="text-yellow-400 hover:underline"><i
-                        class="fab fa-facebook-f mr-2"></i>Facebook</a>
-                <a href="https://instagram.com/yalasafari" class="text-yellow-400 hover:underline"><i
-                        class="fab fa-instagram mr-2"></i>Instagram</a>
-                <a href="https://twitter.com/yalasafari" class="text-yellow-400 hover:underline"><i
-                        class="fab fa-twitter mr-2"></i>Twitter</a>
+            <p class="text-lg">© 2025 Yala Safari Jeep Tour. All rights reserved.</p>
+            <p class="mt-4"><a href="/privacy" class="text-yellow-400 hover:text-yellow-300">Privacy Policy</a> | <a
+                    href="/terms" class="text-yellow-400 hover:text-yellow-300">Terms of Service</a></p>
+            <div class="mt-6 flex justify-center gap-6">
+                <a href="https://facebook.com/yalasafari" class="text-yellow-400 hover:text-yellow-300"
+                    aria-label="Facebook"><i class="fab fa-facebook-f mr-2 text-lg"></i>Facebook</a>
+                <a href="https://instagram.com/yalasafari" class="text-yellow-400 hover:text-yellow-300"
+                    aria-label="Instagram"><i class="fab fa-instagram mr-2 text-lg"></i>Instagram</a>
+                <a href="https://twitter.com/yalasafari" class="text-yellow-400 hover:text-yellow-300"
+                    aria-label="Twitter"><i class="fab fa-twitter mr-2 text-lg"></i>Twitter</a>
             </div>
         </div>
     </footer>
@@ -504,61 +684,49 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // Mobile menu with backdrop
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+            const backdrop = document.getElementById('menu-backdrop');
+            if (!backdrop) {
+                const newBackdrop = document.createElement('div');
+                newBackdrop.id = 'menu-backdrop';
+                newBackdrop.className = 'fixed inset-0 bg-black bg-opacity-60 z-40 transition-opacity duration-300';
+                newBackdrop.onclick = toggleMenu;
+                document.body.appendChild(newBackdrop);
+            } else {
+                backdrop.remove();
+            }
         }
 
+        // FAQ toggle with aria-expanded
         function toggleFAQ(button) {
             const content = button.nextElementSibling;
-            content.classList.toggle('hidden');
+            const isExpanded = !content.classList.contains('show');
+            document.querySelectorAll('.faq-content').forEach(item => {
+                item.classList.remove('show');
+                item.previousElementSibling.setAttribute('aria-expanded', 'false');
+            });
+            if (isExpanded) {
+                content.classList.add('show');
+                button.setAttribute('aria-expanded', 'true');
+            }
         }
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Slideshow functionality
-        function startSlideshow() {
-            const slides = document.querySelectorAll('.slide');
-            let currentSlide = 0;
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.toggle('active', i === index);
-                });
-            }
-
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-
-            showSlide(currentSlide);
-            setInterval(nextSlide, 5000); // Change slide every 5 seconds
-        }
-
-        // Form validation
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
+        // WhatsApp contact with validation
+        function sendToWhatsApp() {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const safari = document.getElementById('safari').value;
             const message = document.getElementById('message').value.trim();
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            let isValid = true;
-
             // Reset error messages
-            document.getElementById('nameError').classList.add('hidden');
-            document.getElementById('emailError').classList.add('hidden');
-            document.getElementById('safariError').classList.add('hidden');
-            document.getElementById('messageError').classList.add('hidden');
+            document.querySelectorAll('.error-message').forEach(error => error.classList.add('hidden'));
+
+            let isValid = true;
 
             if (!name) {
                 document.getElementById('nameError').classList.remove('hidden');
@@ -580,16 +748,83 @@
                 isValid = false;
             }
 
-            if (!isValid) {
-                e.preventDefault();
+            if (isValid) {
+                const whatsappMessage = `Hello, I'm ${name} (${email}). I'm interested in ${safari} safari. ${message}`;
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                const whatsappUrl = `https://wa.me/+94766334101?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+                // Reset form
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('safari').value = '';
+                document.getElementById('message').value = '';
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
 
-        window.addEventListener('load', startSlideshow);
+        // Slideshow
+        function startSlideshow() {
+            const slides = document.querySelectorAll('.slide');
+            if (slides.length === 0) return;
+            let currentSlide = 0;
 
-        AOS.init({
-            duration: 1000,
-            once: true
+            function showSlide(index) {
+                slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            showSlide(currentSlide);
+            setInterval(nextSlide, 5000);
+        }
+
+        // Sticky CTA close
+        function closeStickyCTA() {
+            document.getElementById('sticky-cta').style.display = 'none';
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+        scrollToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Initialize animations and slideshow
+        window.addEventListener('load', () => {
+            AOS.init({
+                duration: 1200,
+                easing: 'ease-out-cubic',
+                once: true
+            });
+            startSlideshow();
         });
     </script>
 </body>
