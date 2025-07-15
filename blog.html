@@ -8,7 +8,7 @@
         content="Explore the latest blog posts from Yala Safari Jeep Tour about wildlife adventures in Sri Lanka's national parks.">
     <meta name="keywords" content="Yala Safari Blog, Wildlife Adventures, Sri Lanka Safari, Travel Blog, Safari Tips">
     <meta name="author" content="Yala Safari Jeep Tour">
-    <!-- Open Graph Meta Tags for Social Sharing -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Blog - Yala Safari Jeep Tour">
     <meta property="og:description"
         content="Read our latest blog posts about safari adventures and wildlife in Sri Lanka’s national parks.">
@@ -16,37 +16,48 @@
     <meta property="og:url" content="https://yourwebsite.com/blog.html">
     <title>Blog - Yala Safari Jeep Tour</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-green: #1a3c34;
+            --accent-yellow: #facc15;
+            --accent-orange: #f59e0b;
+            --neutral-gray: #2d2d2d;
+            --light-bg: #f8fafc;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: var(--light-bg);
+            color: var(--neutral-gray);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         .navbar {
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
         }
 
         .navbar.scrolled {
-            background-color: rgba(0, 0, 0, 0.9);
+            background: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .hero {
             position: relative;
-            min-height: 60vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-green), #4a7043);
         }
 
         .slideshow {
@@ -79,207 +90,298 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
             z-index: 2;
         }
 
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 6vw, 4.5rem);
-            font-weight: 700;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 900;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
 
         .hero-content p {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
         }
 
         .blog-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 0.75rem;
+            transition: all 0.4s ease;
+            border-radius: 16px;
             background: white;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
         .blog-card:hover {
-            transform: translateY(-0.625rem);
-            box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(145deg, white, #f1f5f9);
         }
 
         .blog-card img {
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
         }
 
         .blog-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .whatsapp-btn {
             position: fixed;
-            bottom: 1.25rem;
-            right: 1.25rem;
-            background-color: #25D366;
+            bottom: 90px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            padding: 1.125rem;
-            border-radius: 9999px;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 50%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            animation: pulse 2s infinite;
-            min-width: 3rem;
-            min-height: 3rem;
+            transition: all 0.3s ease;
         }
 
         .whatsapp-btn:hover {
-            background-color: #128C7E;
+            transform: scale(1.15);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .whatsapp-btn:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            bottom: 70px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1001;
+        }
+
+        .whatsapp-tooltip h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .whatsapp-tooltip ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+        }
+
+        .whatsapp-tooltip li {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
 
         .sticky-cta {
             z-index: 50;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-orange));
+            padding: 1rem;
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
+        .sticky-cta .close-btn {
+            font-size: 1.5rem;
+            color: var(--neutral-gray);
+            transition: color 0.3s;
         }
 
-        @media (max-width: 640px) {
-            .hero {
-                min-height: 50vh;
-            }
+        .sticky-cta .close-btn:hover {
+            color: #000;
+        }
 
-            .hero-content h1 {
-                font-size: 2rem;
-            }
+        .pagination button {
+            transition: all 0.3s ease;
+        }
 
-            .hero-content p {
-                font-size: 1rem;
-            }
+        .pagination button:hover {
+            background: var(--accent-yellow);
+            color: var(--neutral-gray);
+        }
 
-            .hero-content a {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            .blog-card img {
-                height: 150px;
-            }
-
-            .blog-card .p-4 {
-                padding: 1rem;
-            }
-
-            .sticky-cta p {
-                font-size: 0.8rem;
-            }
-
-            .sticky-cta a {
-                padding: 0.375rem 1rem;
-                font-size: 0.875rem;
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
             }
         }
 
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .hero {
-                min-height: 55vh;
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: clamp(2rem, 5vw, 3.5rem);
             }
 
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-
-            .hero-content p {
-                font-size: 1.25rem;
+            .hero p {
+                font-size: clamp(1rem, 2.5vw, 1.5rem);
             }
 
             .blog-card img {
                 height: 180px;
             }
 
-            .blog-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .navbar .container {
+                padding: 0 1.5rem;
             }
         }
 
-        @media (min-width: 1025px) {
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.75rem, 4vw, 2.5rem);
+            }
+
+            .hero p {
+                font-size: clamp(0.9rem, 2vw, 1.25rem);
+            }
+
+            .blog-card {
+                margin-bottom: 2rem;
+            }
+
+            .blog-card img {
+                height: 160px;
+            }
+
+            .whatsapp-tooltip {
+                width: 200px;
+                bottom: 60px;
+                right: 10px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
             .hero {
                 min-height: 60vh;
             }
 
-            .blog-card img {
-                height: 200px;
+            .hero h1 {
+                font-size: clamp(1.5rem, 3.5vw, 2rem);
             }
 
-            .blog-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .hero p {
+                font-size: clamp(0.8rem, 1.8vw, 1rem);
             }
+
+            .navbar .container {
+                padding: 0 1rem;
+            }
+
+            .whatsapp-btn {
+                bottom: 80px;
+                right: 20px;
+                padding: 15px;
+            }
+
+            .sticky-cta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .sticky-cta p {
+                font-size: 0.9rem;
+            }
+
+            .blog-card img {
+                height: 140px;
+            }
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 150px;
+            right: 30px;
+            background: var(--accent-yellow);
+            color: var(--neutral-gray);
+            padding: 14px;
+            border-radius: 50%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            border: none;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            background: var(--accent-orange);
+            transform: scale(1.1);
+        }
+
+        a:focus,
+        button:focus {
+            outline: 3px solid var(--accent-yellow);
+            outline-offset: 3px;
         }
     </style>
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar fixed top-0 w-full z-50 bg-transparent text-white" aria-label="Main navigation">
+    <nav class="navbar fixed top-0 w-full z-50" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="images/Final.png" alt="Yala Safari Jeep Tour Logo" class="h-12 mr-3 sm:h-10" loading="lazy">
-                <a href="index.html" class="text-2xl font-bold sm:text-xl">Yala Safari Jeep Tour</a>
+                <img src="images/Final.png" alt="Yala Safari Jeep Tour Logo" class="h-14 mr-3" loading="lazy">
+                <a href="index.html" class="text-2xl font-bold text-white">Yala Safari Jeep Tour</a>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
-                <a href="yala.html" class="hover:text-yellow-400 transition">Yala</a>
-                <a href="udawalawe.html" class="hover:text-yellow-400 transition">Udawalawe</a>
-                <a href="bundala.html" class="hover:text-yellow-400 transition">Bundala</a>
-                <a href="weheragala.html" class="hover:text-yellow-400 transition">Weheragala</a>
-                <a href="about.html" class="hover:text-yellow-400 transition">About</a>
-                <a href="contact.html" class="hover:text-yellow-400 transition">Contact</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-white hover:text-yellow-300 font-medium">Home</a>
+                <a href="yala.html" class="text-white hover:text-yellow-300 font-medium">Yala</a>
+                <a href="udawalawe.html" class="text-white hover:text-yellow-300 font-medium">Udawalawe</a>
+                <a href="bundala.html" class="text-white hover:text-yellow-300 font-medium">Bundala</a>
+                <a href="weheragala.html" class="text-white hover:text-yellow-300 font-medium">Weheragala</a>
+                <a href="about.html" class="text-white hover:text-yellow-300 font-medium">About</a>
+                <a href="contact.html" class="text-white hover:text-yellow-300 font-medium">Contact</a>
             </div>
-            <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu" onclick="toggleMenu()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()" aria-label="Open menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
-            <a href="index.html" class="block px-4 py-3 text-white hover:bg-gray-700 transition">Home</a>
-            <a href="yala.html" class="block px-4 py-3 text-white hover:bg-gray-700 transition">Yala</a>
-            <a href="udawalawe.html" class="block px-4 py-3 text-white hover:bg-gray-700 transition">Udawalawe</a>
-            <a href="bundala.html" class="block px-4 py-3 text-white hover:bg-gray-700 transition">Bundala</a>
-            <a href="weheragala.html" class="block px-4 py-3 text-white hover:bg-gray-700 transition">Weheragala</a>
-            <a href="about.html" class="block px-4 py-3 text-white hover:bg-gray-700 transition">About</a>
-            <a href="contact.html" class="block px-4 py-3 text-white hover:bg-gray-700 transition">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900">
+            <a href="index.html" class="block px-4 py-3 text-white hover:bg-gray-800">Home</a>
+            <a href="yala.html" class="block px-4 py-3 text-white hover:bg-gray-800">Yala</a>
+            <a href="udawalawe.html" class="block px-4 py-3 text-white hover:bg-gray-800">Udawalawe</a>
+            <a href="bundala.html" class="block px-4 py-3 text-white hover:bg-gray-800">Bundala</a>
+            <a href="weheragala.html" class="block px-4 py-3 text-white hover:bg-gray-800">Weheragala</a>
+            <a href="about.html" class="block px-4 py-3 text-white hover:bg-gray-800">About</a>
+            <a href="contact.html" class="block px-4 py-3 text-white hover:bg-gray-800">Contact</a>
         </div>
     </nav>
 
     <!-- Sticky CTA Bar -->
-    <div class="sticky-cta fixed bottom-0 w-full bg-yellow-400 text-gray-800 py-3 text-center" data-aos="fade-up"
+    <div id="sticky-cta" class="sticky-cta fixed bottom-0 w-full text-gray-900 py-4 text-center" data-aos="fade-up"
         role="alert">
-        <p class="inline-block mr-4 sm:mr-2">Ready for the wild? Book your safari now!</p>
+        <p class="inline-block mr-4 font-semibold text-lg">Ready for the wild? Book your safari now!</p>
         <a href="contact.html#contact-form"
-            class="bg-gray-800 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition duration-300 sm:px-4 sm:py-1">Book
-            Now</a>
+            class="bg-gray-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition duration-300"
+            aria-label="Book now">Book Now</a>
+        <button class="close-btn" aria-label="Close" onclick="closeStickyCTA()">×</button>
     </div>
 
     <!-- Hero Section with Image Slideshow -->
-    <section class="hero" data-aos="zoom-in">
+    <section class="hero" data-aos="zoom-out">
         <div class="slideshow">
             <img src="images/tiger.jpg" alt="Yala Leopard" class="slide active" loading="lazy">
             <img src="images/birds.jpg" alt="Bundala Birds" class="slide" loading="lazy">
@@ -288,83 +390,110 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="mb-4">Explore Our Wild Stories</h1>
-            <p class="mb-6 max-w-2xl mx-auto">Dive into the latest adventures and insights from Sri Lanka’s national
+            <h1 class="mb-6">Explore Our Wild Stories</h1>
+            <p class="mb-8 max-w-2xl mx-auto">Dive into the latest adventures and insights from Sri Lanka’s national
                 parks.</p>
-            <a href="#blogs"
-                class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 sm:px-4 sm:py-2">Read
-                Blogs</a>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#blogs"
+                    class="bg-yellow-300 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-yellow-400 transition duration-300 shadow-lg"
+                    aria-label="Read blogs">Read Blogs</a>
+                <a href="contact.html#contact-form"
+                    class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition duration-300"
+                    aria-label="Book now">Book a Tour</a>
+            </div>
         </div>
     </section>
 
     <!-- Blog Section -->
-    <section class="py-16 bg-white" id="blogs">
+    <section class="py-24 bg-white" id="blogs">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 font-['Playfair_Display']" data-aos="fade-up">Latest Blog
-                Posts</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 font-['Playfair_Display']"
+                data-aos="fade-up">Latest Blog Posts</h2>
             <div class="blog-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="zoom-in">
                 <!-- Blog Post 1 - Manual Update -->
                 <div class="blog-card">
                     <img src="images/blog-placeholder1.jpg" alt="Blog Post 1" loading="lazy">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold mb-2">Add Blog Title Here</h3>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Add Blog Title Here</h3>
                         <p class="text-gray-600 mb-4">Add a short excerpt or summary of the blog post here.</p>
-                        <a href="#" class="text-yellow-400 font-semibold hover:underline">Read More</a>
+                        <a href="#"
+                            class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 shadow-md">Read
+                            More</a>
                     </div>
                 </div>
-
                 <!-- Blog Post 2 - Manual Update -->
                 <div class="blog-card">
                     <img src="images/blog-placeholder2.jpg" alt="Blog Post 2" loading="lazy">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold mb-2">Add Blog Title Here</h3>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Add Blog Title Here</h3>
                         <p class="text-gray-600 mb-4">Add a short excerpt or summary of the blog post here.</p>
-                        <a href="#" class="text-yellow-400 font-semibold hover:underline">Read More</a>
+                        <a href="#"
+                            class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 shadow-md">Read
+                            More</a>
                     </div>
                 </div>
-
                 <!-- Blog Post 3 - Manual Update -->
                 <div class="blog-card">
                     <img src="images/blog-placeholder3.jpg" alt="Blog Post 3" loading="lazy">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold mb-2">Add Blog Title Here</h3>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Add Blog Title Here</h3>
                         <p class="text-gray-600 mb-4">Add a short excerpt or summary of the blog post here.</p>
-                        <a href="#" class="text-yellow-400 font-semibold hover:underline">Read More</a>
+                        <a href="#"
+                            class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300 shadow-md">Read
+                            More</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Pagination (Optional - Manual Update) -->
-            <div class="mt-8 text-center" data-aos="fade-up">
+            <!-- Pagination -->
+            <div class="mt-12 text-center pagination" data-aos="fade-up">
                 <button
-                    class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition duration-300 mr-2">Previous</button>
+                    class="bg-gray-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition duration-300 mr-4"
+                    aria-label="Previous page">Previous</button>
                 <button
-                    class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition duration-300">Next</button>
+                    class="bg-gray-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition duration-300"
+                    aria-label="Next page">Next</button>
             </div>
         </div>
     </section>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/+94766334101" class="whatsapp-btn" data-aos="fade-up" aria-label="Contact us on WhatsApp">
-        <svg class="w-6 h-6 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path
-                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.1.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.1.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
-        </svg>
-    </a>
+    <!-- WhatsApp Button with Tooltip -->
+    <div class="whatsapp-btn" data-aos="fade-up">
+        <a href="https://wa.me/+94766334101" class="flex items-center justify-center" aria-label="Chat on WhatsApp">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.1.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.1.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
+            </svg>
+        </a>
+        <div class="whatsapp-tooltip">
+            <h4>Have Questions?</h4>
+            <ul>
+                <li>What makes your tours eco-friendly?</li>
+                <li>Who are your expert guides?</li>
+                <li>Can I customize a safari tour?</li>
+                <li>How do you support conservation?</li>
+                <li>Any group discounts available?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up text-lg"></i>
+    </button>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 sm:py-4">
+    <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-sm sm:text-xs">© 2025 Yala Safari Jeep Tour. All rights reserved.</p>
-            <p class="mt-2 text-sm sm:text-xs"><a href="/privacy" class="text-yellow-400 hover:underline">Privacy
-                    Policy</a> | <a href="/terms" class="text-yellow-400 hover:underline">Terms of Service</a></p>
-            <div class="mt-4 flex justify-center gap-4">
-                <a href="https://facebook.com/yalasafari" class="text-yellow-400 hover:underline social-icon"
-                    aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com/yalasafari" class="text-yellow-400 hover:underline social-icon"
-                    aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://twitter.com/yalasafari" class="text-yellow-400 hover:underline social-icon"
-                    aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <p class="text-lg">© 2025 Yala Safari Jeep Tour. All rights reserved.</p>
+            <p class="mt-4"><a href="/privacy" class="text-yellow-400 hover:text-yellow-300">Privacy Policy</a> | <a
+                    href="/terms" class="text-yellow-400 hover:text-yellow-300">Terms of Service</a></p>
+            <div class="mt-6 flex justify-center gap-6">
+                <a href="https://facebook.com/yalasafari" class="text-yellow-400 hover:text-yellow-300"
+                    aria-label="Facebook"><i class="fab fa-facebook-f mr-2 text-lg"></i>Facebook</a>
+                <a href="https://instagram.com/yalasafari" class="text-yellow-400 hover:text-yellow-300"
+                    aria-label="Instagram"><i class="fab fa-instagram mr-2 text-lg"></i>Instagram</a>
+                <a href="https://twitter.com/yalasafari" class="text-yellow-400 hover:text-yellow-300"
+                    aria-label="Twitter"><i class="fab fa-twitter mr-2 text-lg"></i>Twitter</a>
             </div>
         </div>
     </footer>
@@ -372,17 +501,34 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // Mobile menu with backdrop
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+            const backdrop = document.getElementById('menu-backdrop');
+            if (!backdrop) {
+                const newBackdrop = document.createElement('div');
+                newBackdrop.id = 'menu-backdrop';
+                newBackdrop.className = 'fixed inset-0 bg-black bg-opacity-60 z-40 transition-opacity duration-300';
+                newBackdrop.onclick = toggleMenu;
+                document.body.appendChild(newBackdrop);
+            } else {
+                backdrop.remove();
+            }
         }
 
+        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
 
+        // Slideshow
         function startSlideshow() {
             const slides = document.querySelectorAll('.slide');
             let currentSlide = 0;
@@ -400,9 +546,42 @@
             setInterval(nextSlide, 5000);
         }
 
-        window.addEventListener('load', startSlideshow);
+        // Sticky CTA close
+        function closeStickyCTA() {
+            document.getElementById('sticky-cta').style.display = 'none';
+        }
 
-        AOS.init({ duration: 1000, once: true });
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+        scrollToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Initialize animations and slideshow
+        window.addEventListener('load', () => {
+            AOS.init({
+                duration: 1200,
+                easing: 'ease-out-cubic',
+                once: true
+            });
+            startSlideshow();
+        });
     </script>
 </body>
 
