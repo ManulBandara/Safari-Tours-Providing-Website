@@ -9,7 +9,6 @@
     <meta name="keywords"
         content="Yala Safari, Yala National Park, Morning Safari, Afternoon Safari, Full-Day Safari, Sri Lanka Wildlife Tours">
     <meta name="author" content="Yala Safari Jeep Tour">
-    <!-- Open Graph Meta Tags for Social Sharing -->
     <meta property="og:title" content="Yala National Park Safari Tours - Yala Safari Jeep Tour">
     <meta property="og:description"
         content="Join our Morning, Afternoon, or Full-Day Safari Tours in Yala National Park for an unforgettable wildlife experience.">
@@ -30,12 +29,12 @@
         }
 
         .navbar {
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
 
         .navbar.scrolled {
-            background-color: rgba(0, 0, 0, 0.95);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            background: #1a3c34ee;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
         }
 
         .hero {
@@ -52,22 +51,18 @@
 
         .slideshow {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: 1;
         }
 
         .slide {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out, transform 8s ease-in-out;
+            transition: opacity 1.5s, transform 8s;
         }
 
         .slide.active {
@@ -77,151 +72,91 @@
 
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            inset: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
             z-index: 2;
+            backdrop-filter: blur(2px);
         }
 
         .hero-content {
             position: relative;
             z-index: 3;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
+            color: #fff;
+            text-align: center;
+            animation: fadeInUp 1s 0.2s both;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px #0007;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 6px #0005;
         }
 
         .tour-card,
         .testimonial-card,
         .wildlife-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            border-radius: 12px;
-            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            border-radius: 1rem;
+            background: #fff;
         }
 
         .tour-card:hover,
         .testimonial-card:hover,
         .wildlife-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(145deg, #ffffff, #e6e6e6);
-        }
-
-        .tour-card img,
-        .testimonial-card img,
-        .wildlife-card img {
-            transition: transform 0.3s ease;
-        }
-
-        .tour-card:hover img,
-        .testimonial-card:hover img,
-        .wildlife-card:hover img {
-            transform: scale(1.05);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 32px #0002;
+            background: #f9fafb;
         }
 
         .whatsapp-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 15px;
+            color: #fff;
+            padding: 18px;
             border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 12px #0003;
             z-index: 1000;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s;
         }
 
         .whatsapp-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        .whatsapp-btn:hover .whatsapp-tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .whatsapp-tooltip {
-            position: absolute;
-            bottom: 70px;
-            right: 0;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            width: 250px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 1001;
-        }
-
-        .whatsapp-tooltip h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .whatsapp-tooltip ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-        }
-
-        .whatsapp-tooltip li {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
         }
 
         .sticky-cta {
             z-index: 50;
             background: linear-gradient(135deg, #facc15, #f59e0b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .sticky-cta a,
-        .tour-card a,
-        .testimonial-card a,
-        .wildlife-card a {
-            transition: transform 0.2s ease, background-color 0.3s ease;
-        }
-
-        .sticky-cta a:hover,
-        .tour-card a:hover,
-        .testimonial-card a:hover,
-        .wildlife-card a:hover {
-            transform: scale(1.05);
-        }
-
-        .trust-badge i {
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .trust-badge i:hover {
-            transform: scale(1.1);
-            color: #f59e0b;
+        .sticky-cta .close-btn {
+            margin-left: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
         }
 
         .star-rating {
             color: #FFD700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .faq-item .faq-content {
-            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            transition: max-height 0.3s, opacity 0.3s;
             overflow: hidden;
             max-height: 0;
             opacity: 0;
@@ -234,21 +169,19 @@
 
         .booking-section {
             background: linear-gradient(135deg, #1a3c34, #4a7043);
-            color: white;
-            border-radius: 16px;
-            padding: 2rem;
+            color: #fff;
+            border-radius: 1rem;
         }
 
         .booking-section input,
         .booking-section select {
             background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            border: 1px solid #fff3;
         }
 
-        .booking-section input::placeholder,
-        .booking-section select {
-            color: rgba(255, 255, 255, 0.7);
+        .booking-section input::placeholder {
+            color: #fff9;
         }
 
         .booking-section button {
@@ -257,13 +190,23 @@
 
         .booking-section button:hover {
             background: linear-gradient(135deg, #f59e0b, #d97706);
-            transform: scale(1.05);
+        }
+
+        a:focus,
+        button:focus {
+            outline: 2px solid #facc15;
+            outline-offset: 2px;
         }
 
         @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
             to {
-                transform: translateY(0);
                 opacity: 1;
+                transform: none;
             }
         }
 
@@ -276,20 +219,15 @@
                 font-size: 2rem;
             }
 
-            .hero p {
-                font-size: 1rem;
-            }
-
             .tour-card,
             .testimonial-card,
             .wildlife-card {
                 margin-bottom: 1.5rem;
             }
 
-            .whatsapp-tooltip {
-                width: 200px;
-                bottom: 60px;
-                right: 10px;
+            .sticky-cta {
+                flex-direction: column;
+                padding: 1rem;
             }
         }
     </style>
@@ -300,8 +238,8 @@
     <nav class="navbar fixed top-0 w-full z-50 bg-transparent">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="images/Final.png" alt="Yala Safari Jeep Tour Logo" class="h-12 mr-3">
-                <a href="index.html" class="text-2xl font-bold text-white">Yala Safari Jeep Tour</a>
+                <img src="images/Final.png" alt="Yala Safari Jeep Tour Logo" class="h-10 mr-2">
+                <a href="index.html" class="text-xl font-bold text-white">Yala Safari Jeep Tour</a>
             </div>
             <div class="hidden md:flex space-x-6">
                 <a href="index.html" class="text-white hover:text-yellow-400">Home</a>
@@ -312,11 +250,8 @@
                 <a href="about.html" class="text-white hover:text-yellow-400">About</a>
                 <a href="contact.html" class="text-white hover:text-yellow-400">Contact</a>
             </div>
-            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()" aria-label="Open menu">
+                <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
@@ -347,9 +282,8 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="text-3xl md:text-5xl font-bold mb-4">Yala National Park Safaris</h1>
-            <p class="text-lg md:text-xl mb-6">Discover leopards, elephants, and more in Sri Lanka’s premier wildlife
-                destination.</p>
+            <h1>Yala National Park Safaris</h1>
+            <p>Discover leopards, elephants, and more in Sri Lanka’s premier wildlife destination.</p>
             <a href="#booking"
                 class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300">Book
                 Your Safari</a>
@@ -600,26 +534,11 @@
         </div>
     </section>
 
-    <!-- WhatsApp Button with Tooltip -->
-    <div class="whatsapp-btn" data-aos="fade-up">
-        <a href="https://wa.me/+94766334101?text=Hi%20Yala%20Safari!%20I%27m%20interested%20in%20a%20Yala%20National%20Park%20safari."
-            class="flex items-center justify-center">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.37 3.45 1.05 5L2 22l5.32-1.14c1.45.83 3.08 1.27 4.72 1.27 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.91-9.91-9.91zm5.42 15.08c-.24.67-.74 1.18-1.4 1.36-.66.18-1.53.07-2.43-.49-1.03-.64-1.95-1.66-2.77-2.77-.82-1.11-1.5-2.31-1.86-3.68-.36-1.37-.05-2.82.67-3.91.11-.17.24-.31.41-.39.16-.08.34-.1.51-.03.17.07.31.24.43.41l.83 1.36c.14.23.17.49.08.74-.09.25-.27.47-.49.61l-.49.36c-.17.13-.23.35-.17.56.28.98.83 1.88 1.5 2.64.67.76 1.48 1.35 2.39 1.74.22.1.46.07.62-.06l.39-.30c.22-.17.49-.25.76-.22.27.03.51.17.69.39l.94 1.14c.18.22.24.49.16.75z" />
-            </svg>
-        </a>
-        <div class="whatsapp-tooltip">
-            <h4>Ask About Yala Safaris!</h4>
-            <ul>
-                <li>Best time for leopard sightings?</li>
-                <li>Morning or afternoon safari better?</li>
-                <li>Group discounts available?</li>
-                <li>What’s included in a full-day tour?</li>
-                <li>Hotel pick-up for Yala?</li>
-            </ul>
-        </div>
-    </div>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+94766334101?text=Hi%20Yala%20Safari!%20I%27m%20interested%20in%20a%20Yala%20National%20Park%20safari."
+        class="whatsapp-btn" data-aos="fade-up" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp fa-2x"></i>
+    </a>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
@@ -660,7 +579,12 @@
             const date = document.getElementById('date').value;
 
             if (name && email && safari && date) {
-                const message = `Hello, I'm ${name} (${email}). I'd like to book a ${safari} safari in Yala for ${date}.`;
+                const safariText = {
+                    "morning": "Morning Safari",
+                    "afternoon": "Afternoon Safari",
+                    "full-day": "Full-Day Safari"
+                }[safari] || safari;
+                const message = `Hello, I'm ${name} (${email}). I'd like to book a ${safariText} in Yala for ${date}.`;
                 const encodedMessage = encodeURIComponent(message);
                 const whatsappUrl = `https://wa.me/+94766334101?text=${encodedMessage}`;
                 window.open(whatsappUrl, '_blank');
@@ -696,7 +620,7 @@
             }
 
             showSlide(currentSlide);
-            setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            setInterval(nextSlide, 5000);
         }
 
         window.addEventListener('load', startSlideshow);
